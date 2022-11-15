@@ -109,10 +109,12 @@ void CleanupDeviceD3D()
 			
 			if (values.menuEnabled)
 				if (tabSelected == 2)
-					DrawCircle(ImVec2(Width / 2, Height / 2), values.aimbotFOV, D3DCOLOR_ARGB(255, 255, 0, 0));
-			DrawEnts();
-			DrawRocks();
-			EndScene();
+				{
+					
+			DrawCircle(ImVec2(Width / 2, Height / 2), values.aimbotFOV, D3DCOLOR_ARGB(255, 255, 0, 0))
+				
+					}
+			return false
 		}
 
 void CConsole::Clear()
