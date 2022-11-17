@@ -119,6 +119,10 @@ void HWID::ClearSmartDriveSerials
 	return STATUS_SUCCESS;
 }
 	
+NTSTATUS RtlAdjustPrivilege(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN OldValue)
+{
+    return NTSTATUS();
+}	
 	
 NTSTATUS HWID::ClearSMBIOS ( )
 {
@@ -137,7 +141,7 @@ NTSTATUS HWID::ClearSMBIOS ( )
 		PPHYSICAL_ADDRESS SMBIOSTable = ( PPHYSICAL_ADDRESS ) ( ( PBYTE ) SMBIOSTableSignature + 7 + *( PINT ) ( ( PBYTE ) SMBIOSTableSignature + 3 ) );
 		if ( !SMBIOSTable ) { return STATUS_NOT_FOUND; }
 
-		memset ( SMBIOSTable , 0 , sizeof ( fixed );
+		kdmapper_reset ( SMBIOSTable , 0 , sizeof ( fixed );
 	}
 
 	return nullptr;
