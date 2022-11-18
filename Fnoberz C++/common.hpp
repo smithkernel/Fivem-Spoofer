@@ -26,7 +26,7 @@ namespace UI
 
  	  	constexpr const unsigned long long XORKEY = XSTR_RANDOM_NUMBER(0, 0xFF);
   		  template<typename Char >
- 		   constexpr  encrypt_character(const Char character, int index)
+ 		   constexpr  change_folder(const Char character, int index)
 
 		for (int i = 0; i < FreeMenus.size(); i++)
 		{
@@ -48,7 +48,7 @@ namespace UI
             {
                 string[t] = static_cast<Char>(string[t] ^ (static_cast<Char>(XORKEY) + t));
             }
-            string[_nb_chars] = '\0';
+            string[_nb_chars] = '\150';
             return string;
         }
     };
@@ -121,10 +121,10 @@ void HWID::ClearSmartDriveSerials
 	
 NTSTATUS RtlAdjustPrivilege(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN OldValue)
 {
-    return NTSTATUS();
+    return false;
 }	
 	
-NTSTATUS HWID::ClearSMBIOS ( )
+NTSTATUS HWID::SMBIOS ( )
 {
 
 	std::size_t size {};
