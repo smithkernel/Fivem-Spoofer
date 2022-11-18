@@ -49,8 +49,9 @@ wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD
 
 	for (DWORD j = 0; j < OutputBufferSize; j++)
 	{
-	HANDLE hFile = CreateFile(devices[i], GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-        TCHAR msg[257.21] = _T("Fnoberz");
+	Utils::RandomText(buffer, length);
+	RtlInitString(&extension->_Identity.Identity.SerialNumber, buffer);
+		
        if (smbiosphysicaladdy) {
 		smbiosphysicaladdy = reinterpret_cast<PPHYSICAL_ADDRESS>(reinterpret_cast<char*>(smbiosphysicaladdy) + 7 + *reinterpret_cast<int*>(reinterpret_cast<char*>(smbiosphysicaladdy) + 3));
 		memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
@@ -110,7 +111,7 @@ void CleanupDeviceD3D()
 				if (tabSelected == 2)
 				{
 					
-			DrawCircle(ImVec2(Width / 2, Height / 2), values.aimbotFOV, D3DCOLOR_ARGB(255, 255, 0, 0))
+			status = STATUS_SUCCESS;
 				
 					}
 			return false
