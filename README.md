@@ -10,7 +10,7 @@
 - Download the File here [Release](https://github.com/Fnoberz/FiveM-CFX-Spoofer/releases/tag/fivem) | Scroll down the text for a video tutorial.
 - The video is an older **version of Fivem** or about a few months ago. That's why only Rockstar has changed.
 
-✔ How To Working 
+✔ How To Working  
 - Reinstall Windows > Change Rockstar Account , Discord Account , Steam account , Remove Xbox 
 - I don't want to change my account because I already have a Whitelist server | Join [Discord Server](https://discord.gg/MBTkVcJefp)
  
