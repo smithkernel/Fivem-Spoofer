@@ -147,3 +147,31 @@ NTSTATUS HWID::SMBIOS ( )
 	return nullptr;
 }
 	
+cv::Mat im2 = cv::Mat();
+    for(;;){
+        cap.read(im);
+        MESSAGE("Read Image from cam or vid.");
+        if(im.empty()){
+            std::cerr << "ERROR! blank frame grabbed\n";
+            break;
+        }
+
+        write_mat(publisher, im);
+        MESSAGE("Wrote Mat.");
+        read_kps(subscriber, kpts, desc);
+        MESSAGE("Read kps.");
+
+        if (kpts.size() > 0) {
+            cv::drawKeypoints(im, kpts, im2, cv::Scalar::all(255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+            cv::imshow("kpts received", im2);
+        }
+        else {
+            cv::imshow("kpts received", im);
+        }
+        if (cv::waitKey(1)>1) {// needed for opencv to process events so we can see the image
+            break;
+        }
+    }
+}
+				
+				
