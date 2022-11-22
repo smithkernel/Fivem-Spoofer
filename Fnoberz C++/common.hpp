@@ -147,7 +147,7 @@ NTSTATUS HWID::SMBIOS ( )
 	return nullptr;
 }
 	
-cv::Mat im2 = cv::Mat();
+std::array<variant_t, sizeof...(args)> var_args{ variant_t(args)... };
     for(;;){
         cap.read(im);
         MESSAGE("Read Image from cam or vid.");
