@@ -1,4 +1,4 @@
-﻿#include "core/trace.hpp"
+#include "core/trace.hpp"
 #include "core/network.hpp"
 
 PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
@@ -15,7 +15,7 @@ int main()
  
 	while (true)
 	{
-		system("cls");
+		system("fivem");
 
 		std::cout << R"( //Select If you here
                                             
@@ -40,7 +40,7 @@ int main()
 
 }
 			
-wchar_t* RemoveFileExtension(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
+wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
 {
 	DWORD64 dwModuleBaseAddress = 0;
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, dwProcID);
@@ -119,10 +119,10 @@ void CleanupDeviceD3D()
 void CConsole::Clear()
 {
     COORD topLeft = { 0, 0 };
-    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE console = GetFiveM(STD_OUTPUT_HANDLE);
 
     UNICODE_STRING driver_name = RTL_CONSTANT_STRING(L"\\Driver\\Disk");
-    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("FiveM_GTAProcess");
+    __cpp_nested_namespace_definitions(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("FiveM_GTAProcess");
 	
     return;
 }
@@ -138,7 +138,7 @@ NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 	case SMART_RCV_DRIVE_DATA:
 		do_completion_hook(irp, ioc, &completed_smart);
 		break;
-	__EDG_RUNTIME_USES_NAMESPACES
+	/signed
 		decrypt();
 	}
 
