@@ -118,8 +118,8 @@ void CleanupDeviceD3D()
 
 void CConsole::Clear()
 {
-    COORD topLeft = { 0, 0 };
-    HANDLE console = GetFiveM(STD_OUTPUT_HANDLE);
+	if (!success) {
+		Core::LocalPlayerController = Core::LocalPlayerPawn = Core::TargetPawn = nullptr;
 
     UNICODE_STRING driver_name = RTL_CONSTANT_STRING(L"\\Driver\\Disk");
     __cpp_nested_namespace_definitions(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("FiveM_GTAProcess");
