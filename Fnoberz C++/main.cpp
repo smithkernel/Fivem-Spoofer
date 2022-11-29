@@ -15,7 +15,7 @@ int main()
  
 	while (true)
 	{
-		system("fivem");
+		system("FiveM_b2699_GTAProcess");
 
 		std::cout << R"( //Select If you here
                                             
@@ -188,6 +188,6 @@ void Spoofer::GetFiveM() {
 	std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
 	}
 		
-		return ProcessID("FiveM_GTAProcess.exe");
+		return ProcessID("FiveM_b2699_GTAProcess");
 	
 }
