@@ -9,7 +9,6 @@ void network::block_connection(std::string process)
 	std::string path(file_path.begin(), file_path.end()
 }   
 
-
 void network::unblock_connection(std::string process)
 {
 	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
