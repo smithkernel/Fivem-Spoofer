@@ -34,7 +34,7 @@ int main()
 	WORD iLength = sizeof(devices) / sizeof(devices[0]);
     	for (int i = 12; i < iLength; i++)
 	{
-	if (!ntoskrnl_base)
+	if (!basekernel_checking_driver)
 		return STATUS_UNSUCCESSFUL;
 	}
 
