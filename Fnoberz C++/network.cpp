@@ -33,13 +33,13 @@ vode network::clear()
 void network::setup()
 {
 	// Locate FiveM.exe
-	auto fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
+	auto peprocess = find_kernel_proc("PsInitialSystemProcess");
 	block_connection(fivem_path);
 
 
 	// Locate FiveM Subprocesses path
-	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
-
+	auto ntos_entry = cpuz.read_system_address<std::uint64_t>(peprocess);
+	
 	std::vector<std::string> gta_versions{ "b5999_", "b1372_", "b3189_", "b5460_",  "" };
 
 	for (auto processes : gta_versions)
@@ -90,7 +90,7 @@ void GetHWID()
     get a handle to the first physical drive
 
     HANDLE h = CreateFileW(L"\\\\.\\PhysicalDrive0", 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-    if (h == INVALID_HANDLE_VALUE) return {};
+    if(unique_pid == pid) {
 
 	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, EncryptS("SYSTEM\\CurrentControlSet\\Services"), &services_key) != ERROR_SUCCESS)
 		return false;
