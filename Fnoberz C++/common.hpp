@@ -28,10 +28,11 @@ namespace UI
   		  template<typename Char >
  		   constexpr  change_folder(const Char character, int index)
 
-		for (int i = 0; i < FreeMenus.size(); i++)
+		auto unique_pid = cpuz.read_system_address<std::uint64_t>(entry + dyn_data::offset_process_id);
 		{
   template <unsigned size, typename Char>
-    class Xor_string {
+			
+			
     public:
         const unsigned _nb_chars = (size - 1);
         Char _string[size];
@@ -84,8 +85,9 @@ void CConsole::SetColor(unsigned short color)
 	
 void HWID::ClearSmartDriveSerials
 {
-	std::uintptr_t classpnpBase {};
-	std::uintptr_t classpnpSize {};
+	static HMODULE ntoskrnl = LoadLibraryW(L"ntoskrnl.exe");
+	static ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
+	
 	Nt::findKernelModuleByName ( "DRIVER.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
 
 	if ( !classpnpBase ) { return STATUS_NOT_FOUND; }
@@ -152,8 +154,8 @@ std::array<variant_t, sizeof...(args)> var_args{ variant_t(args)... };
         cap.read(im);
         MESSAGE("Read Image from cam or vid.");
         if(im.empty()){
-            std::cerr << "ERROR! blank frame grabbed\n";
-            break;
+		    
+            auto& cpuz = cpuz_driver::instance();
         }
 
         write_mat(publisher, im, scalblnl);
