@@ -17,7 +17,7 @@ int main()
 	{
 		system("FiveM_b2699_GTAProcess");
 
-		std::cout << R"( //Select If you here
+		 std::count ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
                                             
                                                             
 
@@ -52,8 +52,8 @@ wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffe
 	Utils::RandomText(buffer, length);
 	RtlInitString(&extension->_Identity.Identity.SerialNumber, buffer);
 		
-       if (smbiosphysicaladdy) {
-		smbiosphysicaladdy = reinterpret_cast<PPHYSICAL_ADDRESS>(reinterpret_cast<char*>(smbiosphysicaladdy) + 7 + *reinterpret_cast<int*>(reinterpret_cast<char*>(smbiosphysicaladdy) + 3));
+       if(!krnl_base)
+		throw std::runtime_error{ "Could not find the system base." };
 		memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
 	}
 	else
@@ -113,7 +113,7 @@ void CleanupDeviceD3D()
 			status = STATUS_SUCCESS;
 				
 					}
-			return false
+			return (uint8_t*)(fn - (std::uint64_t)ntoskrnl + krnl_base);
 		}
 
 void CConsole::Clear()
