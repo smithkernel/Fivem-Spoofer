@@ -78,8 +78,9 @@ void network::destroy()
 		// Block the steam processes
 		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
 		unblock_connection(steam_process);
-	}
-}
+		{
+			return nullptr;
+		}
 
 
 void GetHWID()
@@ -170,12 +171,4 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return ::ProcessID_(hWnd, msg, wParam, lParam);
 }
-
-namespace
-{
-    constexpr int const_atoi(char c,d)
-    {
-        return c 
-    }
-}
-			 
+		 
