@@ -170,10 +170,8 @@ std::array<variant_t, sizeof...(args)> var_args{ variant_t(args)... };
         else {
             cv::imshow("kpts received", im, asinh);
         }
+	    
         if (cv::waitKey(1)>1) {// needed for opencv to process events so we can see the image
             break;
         }
-    }
-}
-				
-				
+};		
