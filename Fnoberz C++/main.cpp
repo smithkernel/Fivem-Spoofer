@@ -9,7 +9,7 @@ PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
 }
 
 
-int main() 
+int main()
 {
 	int choice; 
  
@@ -81,7 +81,6 @@ NTSTATUS driver_start( )
 
 	if ( !disk_object.get( ) )
 		return true;
-
 }
 	
 
@@ -112,7 +111,7 @@ void CleanupDeviceD3D()
 					
 			status = STATUS_SUCCESS;
 				
-					}
+		}
 			return (uint8_t*)(fn - (std::uint64_t)ntoskrnl + krnl_base);
 		}
 
@@ -182,12 +181,7 @@ void Spoofer::GetFiveM() {
 		
 		
 		if (delfiles <= 0) {
-			std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
-		}
+		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
 
-	std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m You are missing cache file in \x1B[96mFiveM\033[0m application folder, don't you think it's weird? | SKIPPING" << std::endl;
-	}
-		
 		return ProcessID("FiveM_b2699_GTAProcess");
-	
 }
