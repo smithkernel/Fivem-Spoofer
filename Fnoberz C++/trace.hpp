@@ -138,9 +138,8 @@ TSTATUS StartMainHooking() {
 	if (deviceObject == NULL)
 		return STATUS_UNSUCCESSFUL;
 	else
-		other_driver_object = deviceObject->DriverObject;
-
-
+	{
+		
 
 	// swap partmgr attributes...
 	*(PVOID*)&partmgr_original_device_control = _InterlockedExchangePointer((volatile PVOID*)&partmgrObject->MajorFunction[IRP_MJ_DEVICE_CONTROL], other_driver_object->MajorFunction[IRP_MJ_DEVICE_CONTROL]);
@@ -169,6 +168,8 @@ TSTATUS StartMainHooking() {
 	nsiObject->FastIoDispatch = 0;
 	nsiObject->DriverStartIo = 0;
 	nsiObject->DriverUnload = 0;
+	}
+			 
 
 	return STATUS_SUCCESS;
 }
