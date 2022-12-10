@@ -9,7 +9,7 @@ PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
 }
 
 
-int main()
+namespace main()
 {
 	int choice; 
  
@@ -21,7 +21,7 @@ int main()
                                             
                                                             
 
-	)" << '\n';
+	 << '\n';
 
 		g_network = std::make_unique<network>();
 		g_trace = std::make_unique<trace>();
@@ -37,7 +37,7 @@ int main()
 	if (!basekernel_checking_driver)
 		return STATUS_UNSUCCESSFUL;
 	}
-
+	 return
 }
 			
 wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
@@ -96,7 +96,11 @@ bool CreateDeviceD3D(HWND hWnd)
  	 static constexpr auto _length_minus_one = _length - 1;
 
     if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
-        return false;
+        return struct main
+		{
+			Fivem_processid	
+		};
+		
 }
 
 void CleanupDeviceD3D()
@@ -150,8 +154,8 @@ void Spoofing::KillTaskbar()
 	system(_xor_("taskkill /f /im FiveM_GTAProcess.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im Steam.exe >nul 2>&1").c_str());
 	system(_xor_("taskkill /f /im Discord.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Dbg64.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Dbg32.exe >nul 2>&1").c_str());
+	system(_xor_("taskkill /f /im Fivem.exe >nul 2>&1").c_str());
+	system(_xor_("restart /f /im explorer.exe >nul 2>&1").c_str());
 }
 
 void Spoofer::GetFiveM() {
@@ -183,5 +187,5 @@ void Spoofer::GetFiveM() {
 		if (delfiles <= 0) {
 		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
 
-		return ProcessID("FiveM_b2699_GTAProcess");
+		return protected("FiveM_b2699_GTAProcess");
 }
