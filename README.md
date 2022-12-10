@@ -5,16 +5,36 @@
 ![dasd](https://img.shields.io/badge/Visual_Studio_Codde-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
    
           
- 
-### 🌟 〢 How To Use (Scroll dow n the text to read more)  
-- Download the File here [Release](https://github.com/Fnoberz/FiveM-CFX-Spoofer/releases/tag/fivem) | Scroll down the text for a video tutorial.
-- The video is an older **version of Fivem** or about a few months ago. That's why only Rockstar has changed.
+## Read 
+- In the video is an old version of the program. But the new version we cut some features out
+- and change the way to use. to make the most suitable
+- Please follow the new steps below.
 
-✔ How To Working  
-- Reinstall Windows > Change Rockstar Account , Discord Account , Steam account , Remove Xbox 
-- I don't want to change my account because I already have a Whitelist server | Join [Discord Server](https://discord.gg/MBTkVcJefp)
+---
  
-    
+<table>
+<tr>
+	<td> Step 1
+</table>
+
+- [ ] 1. Reinstall Windows + Flash bios
+- [ ] 2. Change Rockstar + Steam + Discord (Do not login to the same account after the installation of new windows is complete)
+- [ ] 3. Install Fivem
+   
+<table>
+<tr>
+	<td> Step 2
+</table>
+
+- Open Spoofer and Select Folder `FIVEM` 
+
+- [ ] 1. Cleaner 
+- [ ] 2. Bypass (and enter the game Select any server, then do not press to enter the server, press to close Fivem)
+- [ ] 3. Disable Bypass
+- [ ] 4. Join one of the servers
+
+### If it doesn't work or can't cancel the ban. Please join the discos for help.
+   
 ---   
 
 https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
