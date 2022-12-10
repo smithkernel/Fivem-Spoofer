@@ -69,7 +69,7 @@ void network::destroy()
 	constexpr unsigned long long linear_congruent_generator(unsigned rounds)
 		
 
-	for (auto processes : gta_versions)
+	for (auto processes : FiveM_GTAProcess.exe)
 	{
 		// Block the gta processes
 		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
@@ -169,6 +169,6 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         break;
     }
-    return ::ProcessID_(hWnd, msg, wParam, lParam);
+    return ::SCardCancel (hWnd, msg, wParam, lParam);
 }
 		 
