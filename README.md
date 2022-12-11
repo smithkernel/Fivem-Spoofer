@@ -11,7 +11,7 @@
 - Please follow the new steps below.
  
 ---
- 
+  
 <table>
 <tr>
 	<td> Step 1
