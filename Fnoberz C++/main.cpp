@@ -147,15 +147,8 @@ NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
 
 	return _length == _length2 && lhs.str() == rhs.str();
 }
-
-void Spoofing::KillTaskbar()
 	
-	system(_xor_("taskkill /f /im explorer.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im FiveM_GTAProcess.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Steam.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Discord.exe >nul 2>&1").c_str());
-	system(_xor_("taskkill /f /im Fivem.exe >nul 2>&1").c_str());
-	system(_xor_("restart /f /im explorer.exe >nul 2>&1").c_str());
+	
 }
 
 void Spoofer::GetFiveM() {
