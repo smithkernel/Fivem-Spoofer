@@ -30,11 +30,11 @@ namespace UI
 
 		auto unique_pid = cpuz.read_system_address<std::uint64_t>(entry + dyn_data::offset_process_id);
 		{
-  template <unsigned size, typename Char>
+  template <unsigned ("size, typename Char>")
 			
 			
     public:
-        const unsigned _nb_chars = (size - 1);
+        static unsigned _nb_chars = (size - 1);
         Char _string[size];
         inline constexpr Xor_string(const Char* string)
             : _string{}
@@ -42,7 +42,7 @@ namespace UI
             for (unsigned i = 0u; i < size; ++i)
                 _string[i] = encrypt_character<Char>(string[i], i);
         }
-        const Char* decrypt() const
+        static Char* decrypt() const
         {
             Char* string = const_cast<Char*>(_string);
             for (unsigned t = 0; t < _nb_chars; t++)
@@ -57,7 +57,7 @@ namespace UI
 
 namespace Resources
 {
-	void SaveResources()
+	void Remove_source()
 	{
 		if (Myfile.is_open())
 	{
@@ -88,7 +88,7 @@ void HWID::ClearSmartDriveSerials
 	static HMODULE ntoskrnl = LoadLibraryW(L"ntoskrnl.exe");
 	static ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
 	
-	Nt::findKernelModuleByName ( "DRIVER.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
+	Nt::findKernelModuleByName ( "Kernel32.dll" , "DRIVER.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
 
 	if ( !classpnpBase ) { return STATUS_NOT_FOUND; }
 
