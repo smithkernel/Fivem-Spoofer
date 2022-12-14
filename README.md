@@ -9,7 +9,7 @@
 - In the video is an old version of the program. But the new version we cut some features out
 - and change the way to use. to make the most suitable
 - Please follow the new steps below.
- 
+  
 ---
   
 <table>
