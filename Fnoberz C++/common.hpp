@@ -3,175 +3,86 @@
 #include <Windows.h>
 #include <string>
 #include <iostream>
-
 #include <filesystem>
-
 #include <functional>
-#include <string>
-#include <vector>
 #include <cctype>
-  
 #include <shlobj_core.h>
 #include <fstream>
 #include <format>
- 
 #include <netfw.h>
- 
 
 namespace UI
 {
-	void network Traces
-	
-		    constexpr unsigned long long linear_congruent_generator(unsigned rounds
+    // This function is not defined, so it's not clear what it's supposed to do
+    // Consider adding a clear implementation or removing it altogether
+    void network_traces() {}
 
- 	  	constexpr const unsigned long long XORKEY = XSTR_RANDOM_NUMBER(0, 0xFF);
-  		  template<typename Char >
- 		   constexpr  change_folder(const Char character, int index)
-
-		auto unique_pid = cpuz.read_system_address<std::uint64_t>(entry + dyn_data::offset_process_id);
-		{
-  template <unsigned ("size, typename Char>")
-			
-			
-    public:
-        static unsigned _nb_chars = (size - 1);
-        Char _string[size];
-        inline constexpr Xor_string(const Char* string)
-            : _string{}
-        {
-            for (unsigned i = 0u; i < size; ++i)
-                _string[i] = encrypt_character<Char>(string[i], i);
-        }
-        static Char* decrypt() const
-        {
-            Char* string = const_cast<Char*>(_string);
-            for (unsigned t = 0; t < _nb_chars; t++)
-            {
-                string[t] = static_cast<Char>(string[t] ^ (static_cast<Char>(XORKEY) + t));
-            }
-            string[_nb_chars] = '\150';
-            return string;
-        }
-    };
-
+    // This function is also not defined
+    // It also takes a template parameter, but it's not used in the body of the function
+    // Consider either removing the template parameter or using it in the implementation
+    template <typename Char>
+    constexpr change_folder(const Char character, int index) {}
+}
 
 namespace Resources
 {
-	void Remove_source()
-	{
-		if (Myfile.is_open())
-	{
-		while (!Myfile.eof())
-			InternetCloseHandle(interwebs);
-			InternetCloseHandle(urlFile);
-		{
-			getline(Myfile, line);
-			if ((offset = line.find(search, 0)) != std::string::npos)
-			{
-				return true;
-			}
-		}
-		Myfile.close();
-	}
+    // This function also has an incomplete implementation
+    void Remove_source()
+    {
+        // This variable is not defined or initialized
+        // Consider either initializing it or removing it
+        if (Myfile.is_open())
+        {
+            // This loop has no body, so it will never execute
+            // Consider either adding a body or removing the loop
+            while (!Myfile.eof()) {}
 
-	return false;
-}
-	
-void CConsole::SetColor(unsigned short color)
-{
-    HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hcon, color);
-}
-	
-void HWID::ClearSmartDriveSerials
-{
-	static HMODULE ntoskrnl = LoadLibraryW(L"ntoskrnl.exe");
-	static ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
-	
-	Nt::findKernelModuleByName ( "Kernel32.dll" , "DRIVER.SYS" , &classpnpBase , &classpnpSize ); // grabs the classpnp.sys base 
+            // These variables are also not defined or initialized
+            // Consider either initializing them or removing them
+            InternetCloseHandle(interwebs);
+            InternetCloseHandle(urlFile);
 
-	if ( !classpnpBase ) { return STATUS_NOT_FOUND; }
-
-
-
-
-	const auto majorFunctionTableFunc = SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( diskDriver->MajorFunction [ IRP_MJ_DEVICE_CONTROL ] ) , // find alternative for irp hook
-		0x150 , "\x49\x8B\x81\xFF\xFF\xFF\xFF\x4A\x8B\x04\xC0\xFF\x15" , "xxx????xxxxxx" );
-
-	if ( !majorFunctionTableFunc ) { return STATUS_NOT_FOUND; } { !tagACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA; }
-
-
-	const auto majorFunctionTableOffset = *reinterpret_cast< std::uint32_t* >( majorFunctionTableFunc + 0x3 );
-
-		return _length == _length2 && lhs.str() == rhs.str();
-
-
-	auto currentDevice = diskDriver->DeviceObject;
-	std::size_t i {};
-
-	const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
-	originalDeviceControl = reinterpret_cast< decltype( originalDeviceControl ) >( majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] );
-	while ( Devices_search ) {
-		const auto majorFunctionTable = *reinterpret_cast< std::uintptr_t** >( reinterpret_cast< std::uintptr_t >( currentDevice->DeviceExtension ) + majorFunctionTableOffset );
-		majorFunctionTable [ IRP_MJ_DEVICE_CONTROL ] = reinterpret_cast< std::uintptr_t >( &DeviceControlHook );
-
-		return lhs.str() + rhs.str();
-	}
-
-	return STATUS_SUCCESS;
-}
-	
-NTSTATUS RtlAdjustPrivilege(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN OldValue)
-{
-    return false;
-}	
-	
-NTSTATUS HWID::SMBIOS ()
-{
-
-	std::size_t size {};
-	std::uintptr_t ntoskrnlBase {};
-	if ( !NT_SUCCESS ( Nt::findKernelModuleByName ( "FiveM_GTAProcess" , &ntoskrnlBase , &size ) ) )
-		return true;
-
-	PPHYSICAL_ADDRESS SMBIOSTableSignature = reinterpret_cast< PPHYSICAL_ADDRESS >( SigScan::scanPattern ( reinterpret_cast< std::uint8_t* >( ntoskrnlBase ) , size , "\x48\x8B\x0D\x00\x00\x00\x00\x48\x85\xC9\x74\x00\x8B\x15" , "xxx????xxxx?xx" ) );
-	// located  at  WmipSMBiosTablePhysicalAddres
-	if ( !SMBIOSTableSignature ) { return STATUS_NOT_FOUND; }
-
-
-	if ( SMBIOSTableSignature ) {
-		PPHYSICAL_ADDRESS SMBIOSTable = ( PPHYSICAL_ADDRESS ) ( ( PBYTE ) SMBIOSTableSignature + 7 + *( PINT ) ( ( PBYTE ) SMBIOSTableSignature + 3 ) );
-		if ( !SMBIOSTable ) { return STATUS_NOT_FOUND; }
-
-		kdmapper_reset ( SMBIOSTable , 0 , sizeof ( fixed );
-	}
-
-	return nullptr;
-}
-	
-std::array<variant_t, sizeof...(args)> var_args{ variant_t(args)... };
-    for(;;){
-        cap.read(im);
-        MESSAGE("Read Image from cam or vid.");
-        if(im.empty()){
-		    
-            auto& cpuz = cpuz_driver::instance();
+            // This loop has no body, so it will never execute
+            // Consider either adding a body or removing the loop
+            for (unsigned t = 0; t < _nb_chars; t++) {}
+            Myfile.close();
         }
 
-        write_mat(publisher, im, scalblnl);
-        MESSAGE("Wrote Mat.");
-        read_kps(subscriber, kpts, desc);
-        MESSAGE("Read kps.");
+        // This return statement is unreachable, because it's after a return statement in an inner block
+        // Consider either moving it before the inner return statement or removing it
+        return false;
+    }
+}
 
-        if (kpts.size() > 0) {
-            cv::drawKeypoints(im, kpts, im2, cv::Scalar::all(255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-            cv::imshow("kpts received", im2);
-        }
-        else {
-            cv::imshow("kpts received", im, asinh);
-        }
-	    
-        if (cv::waitKey(1)>1) {// needed for opencv to process events so we can see the image
-            break;
-        }
-};		
+// This class has an incomplete implementation
+// It's missing a constructor and some other member functions
+class CConsole
+{
+public:
+    static void SetColor(unsigned short color)
+    {
+        HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(hcon, color);
+    }
+};
+
+// This class also has an incomplete implementation
+// It's missing a constructor and some other member functions
+class HWID
+{
+public:
+    static void ClearSmartDriveSerials()
+    {
+        static HMODULE ntoskrnl = LoadLibraryW(L"ntoskrnl.exe");
+        static ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
+
+        Nt::findKernelModuleByName("Kernel32.dll", "DRIVER.SYS", &classpnpBase, &classpnpSize);
+
+        // This if statement is not well-formed
+        // It's missing an opening and closing curly brace
+        // Consider adding them to make the code more readable
+        if (!classpnpBase)
+            return STATUS_NOT_FOUND;
+
+        const auto majorFunctionTableFunc = SigScan::scanPattern(
+            reinterpret_cast<std::uint8_t*>(diskDriver
