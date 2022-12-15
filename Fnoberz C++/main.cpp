@@ -1,69 +1,79 @@
 #include "core/trace.hpp"
 #include "core/network.hpp"
 
-PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
+PVOID NTAPI Cfx::re(LPCWSTR SystemRoutineName)
 {
-    // It's not clear what this function is supposed to do
-    // Consider adding a clear implementation or removing it altogether
+    // Use RtlFindUnicodeStringInTable to look up system routine name in a table of known routines
     UNICODE_STRING Name;
     RtlInitUnicodeString(&Name, SystemRoutineName);
-    return MmGetSystemRoutineAddress(&Name);
+    const UNICODE_STRING* Routine = RtlFindUnicodeStringInTable(KnownRoutines, true, &Name, NULL);
+    return (Routine != nullptr) ? Routine->Buffer : nullptr;
 }
 
-// This function appears to be the main function of the program
-// It should be named `main` and should return an `int`
-int main()
+
+namespace main()
 {
-    int choice;
-
-    // This loop has no body, so it will never execute
-    // Consider either adding a body or removing the loop
-    while (true) {}
-
-    // This variable is not defined or initialized
-    // Consider either initializing it or removing it
-    system("FiveM_b2699_GTAProcess");
-
-    // This statement is not well-formed
-    // It's missing a semicolon and a newline character
-    // Consider adding them to make the code more readable
-    std::count ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
-
-    // This line is also not well-formed
-    // It's missing a semicolon and it has an extraneous `<< '\n';` at the end
-    // Consider removing it or fixing the syntax
-    g_network = std::make_unique<network>();
-
-    // These statements appear to create instances of the `trace`, `remove`, and `c_globals` classes
-    g_trace = std::make_unique<trace>();
-    g_remove = std::make_unique<remove>();
-    globals = std::make_unique<c_globals>();
-
-    // This loop has no body, so it will never execute
-    // Consider either adding a body or removing the loop
-    while (false) {}
-
-    // This function is not well-formed
-    // It's missing a return type and a closing curly brace
-    // Consider adding them to make the code more readable
-    wchar_t* GetFileNameFromPath(wchar_t* Path)
+    int choice; 
+ 
+    while (true)
     {
-        WORD iLength = sizeof(devices) / sizeof(devices[0]);
-        for (int i = 12; i < iLength; i++)
+        // Call FiveM process directly instead of using system()
+        FiveM_b2699_GTAProcess();
+
+        // Use inline function instead of function pointer
+        ULONG64 krnl_base = SupGetKernelBase(nullptr);
+
+        // Use std::unique_ptr to manage memory automatically
+        std::unique_ptr<network> g_network = std::make_unique<network>();
+        std::unique_ptr<trace> g_trace = std::make_unique<trace>();
+        std::unique_ptr<remove> g_remove = std::make_unique<remove>();
+
+        while (false)
         {
-            if (!basekernel_checking_driver)
-                return STATUS_UNSUCCESSFUL;
+            // Simplify function and check for errors
+            wchar_t* GetFileNameFromPath(wchar_t* Path)
+            {
+                WORD iLength = sizeof(devices) / sizeof(devices[0]);
+                for (int i = 12; i < iLength; i++)
+                {
+                    if (!basekernel_checking_driver)
+                        return nullptr;
+                }
+                return Path;
+            }
+
+            wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
+            {
+                // Check for invalid parameters
+                if (FullFileName == nullptr || OutputBuffer == nullptr || OutputBufferSize == 0)
+                    return nullptr;
+
+                // Use FindLastChar to find the last dot in the file name
+                wchar_t* LastDot = FindLastChar(FullFileName, L'.');
+                if (LastDot == nullptr)
+                    return nullptr;
+
+                // Copy the file name extension to the output buffer
+                wcscpy_s(OutputBuffer, OutputBufferSize, LastDot + 1);
+
+                // Check for errors
+                if (!krnl_base)
+                    throw std::runtime_error{ "Could not find the system base." };
+
+                // Use memset to zero out the SMBIOS physical address buffer
+                memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
+
+                return OutputBuffer;
+            }
         }
-    }
 
-    // This function is also not well-formed
-    // It's missing a return type and a closing curly brace
-    // Consider adding them to make the code more readable
-    wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
-    {
-        DWORD64 dwModuleBaseAddress = 0;
-        HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, dwProcID);
-        if (hSnapshot != INVALID_HANDLE_VALUE)
-            LastDot = &FullFileName[i];
+        class c_globals
+        {
+        public:
+            bool active = true;
+        } globals;
 
-        for (DW
+        NTSTATUS driver_start( )
+        {
+            // Use std::unique_ptr to manage memory automatically
+            std::unique_ptr<DRIVER_OBJECT, decltype(&ObfDere
