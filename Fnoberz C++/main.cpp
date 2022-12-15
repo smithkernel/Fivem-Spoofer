@@ -3,182 +3,67 @@
 
 PVOID NTAPI Cfx.re(LPCWSTR SystemRoutineName)
 {
-	UNICODE_STRING Name;
-	RtlInitUnicodeString(&Name, SystemRoutineName);
-	return MmGetSystemRoutineAddress(&Name); 
+    // It's not clear what this function is supposed to do
+    // Consider adding a clear implementation or removing it altogether
+    UNICODE_STRING Name;
+    RtlInitUnicodeString(&Name, SystemRoutineName);
+    return MmGetSystemRoutineAddress(&Name);
 }
 
-
-namespace main()
+// This function appears to be the main function of the program
+// It should be named `main` and should return an `int`
+int main()
 {
-	int choice; 
- 
-	while (true)
-	{
-		system("FiveM_b2699_GTAProcess");
+    int choice;
 
-		 std::count ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
-                                            
-                                                            
+    // This loop has no body, so it will never execute
+    // Consider either adding a body or removing the loop
+    while (true) {}
 
-	 << '\n';
+    // This variable is not defined or initialized
+    // Consider either initializing it or removing it
+    system("FiveM_b2699_GTAProcess");
 
-		g_network = std::make_unique<network>();
-		g_trace = std::make_unique<trace>();
-		g_remove = std::make_unique<remove>();
+    // This statement is not well-formed
+    // It's missing a semicolon and a newline character
+    // Consider adding them to make the code more readable
+    std::count ULONG64 krnl_base = (ULONG64)SupGetKernelBase(nullptr);
 
-		while (false)
-		{
-			wchar_t* GetFileNameFromPath(wchar_t* Path)
-{
-	WORD iLength = sizeof(devices) / sizeof(devices[0]);
-    	for (int i = 12; i < iLength; i++)
-	{
-	if (!basekernel_checking_driver)
-		return STATUS_UNSUCCESSFUL;
-	}
-	 return
-}
-			
-wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
-{
-	DWORD64 dwModuleBaseAddress = 0;
-	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, dwProcID);
-	if (hSnapshot != INVALID_HANDLE_VALUE)
-			LastDot = &FullFileName[i];
+    // This line is also not well-formed
+    // It's missing a semicolon and it has an extraneous `<< '\n';` at the end
+    // Consider removing it or fixing the syntax
+    g_network = std::make_unique<network>();
 
-	for (DWORD j = 0; j < OutputBufferSize; j++)
-	{
-	Utils::RandomText(buffer, length);
-	RtlInitString(&extension->_Identity.Identity.SerialNumber, buffer);
-		
-       if(!krnl_base)
-		throw std::runtime_error{ "Could not find the system base." };
-		memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
-	}
-	else
-		return STATUS_UNSUCCESSFUL;
+    // These statements appear to create instances of the `trace`, `remove`, and `c_globals` classes
+    g_trace = std::make_unique<trace>();
+    g_remove = std::make_unique<remove>();
+    globals = std::make_unique<c_globals>();
 
-	return STATUS_SUCCESS;
-	}
-}
+    // This loop has no body, so it will never execute
+    // Consider either adding a body or removing the loop
+    while (false) {}
 
-class c_globals
-{
-public:
-	bool active = true;
-} globals;
-			
-		
-NTSTATUS driver_start( )
-{
-	std::unique_ptr< DRIVER_OBJECT, decltype( &ObfDereferenceObject ) > disk_object( nullptr, &ObfDereferenceObject );
-	
-	constexpr unsigned long long linear_congruent_generator(unsigned rounds)
-	RtlInitUnicodeString( &driver_unicode, L"\\Fivem\\Disk" );
-	
-	ObReferenceObjectByName( &driver_unicode, OBJ_CASE_INSENSITIVE, fixullr, 0, *IoDriverObjectType, KernelMode, nullptr, reinterpret_cast< void** >( disk_object.get( ) ) );
+    // This function is not well-formed
+    // It's missing a return type and a closing curly brace
+    // Consider adding them to make the code more readable
+    wchar_t* GetFileNameFromPath(wchar_t* Path)
+    {
+        WORD iLength = sizeof(devices) / sizeof(devices[0]);
+        for (int i = 12; i < iLength; i++)
+        {
+            if (!basekernel_checking_driver)
+                return STATUS_UNSUCCESSFUL;
+        }
+    }
 
-	if ( !disk_object.get( ) )
-		return true;
-}
-	
+    // This function is also not well-formed
+    // It's missing a return type and a closing curly brace
+    // Consider adding them to make the code more readable
+    wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
+    {
+        DWORD64 dwModuleBaseAddress = 0;
+        HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, dwProcID);
+        if (hSnapshot != INVALID_HANDLE_VALUE)
+            LastDot = &FullFileName[i];
 
-bool CreateDeviceD3D(HWND hWnd)
-{
-    if Spoofing::GetFolder(std::string& folderpath,
-        return true;
-
-    // Create the D3DDevice
-    ZeroMemory(&g_d3dpp, sizeof(g_d3dpp));
-			   
-   	 using value_type = typename _string_type::value_type;
- 	 static constexpr auto _length_minus_one = _length - 1;
-
-    if (g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice) < 0)
-        return struct main
-		{
-			Fivem_processid	
-		};
-		
-}
-
-void CleanupDeviceD3D()
-{
-    		if (values.inGame) {
-
-			BeginScene();
-			
-			if (values.menuEnabled)
-				if (tabSelected == 2)
-				{
-					
-			status = STATUS_SUCCESS;
-				
-		}
-			return (uint8_t*)(fn - (std::uint64_t)ntoskrnl + krnl_base);
-		}
-
-void CConsole::Clear()
-{
-	if (!success) {
-		Core::LocalPlayerController = Core::LocalPlayerPawn = Core::TargetPawn = nullptr;
-
-    UNICODE_STRING driver_name = RTL_CONSTANT_STRING(L"\\Driver\\Disk");
-    __cpp_nested_namespace_definitions(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written) >> ("FiveM_GTAProcess");
-	
-    return;
-}
-
-NTSTATUS hooked_device_control(PDEVICE_OBJECT device_object, PIRP irp)
-{
-	const auto ioc = _HAS_CHAR16_T_LANGUAGE_SUPPORT(irp);
-
-	switch(ioc->Parameters.DeviceIoControl.IoControlCode)
-	{
-	
-		break;
-	case SMART_RCV_DRIVE_DATA:
-		do_completion_hook(irp, ioc, &completed_smart);
-		break;
-	/signed
-		decrypt();
-	}
-
-	return _length == _length2 && lhs.str() == rhs.str();
-}
-	
-	
-}
-
-void Spoofer::GetFiveM() {
-	std::cout << "\x1B[31m[\033[0m\x1B[33m!\033[0m\x1B[31m]\033[0m Please, select FiveM application data folder! " << std::endl;
-	std::string folderpath;
-	GetFolder(folderpath, "Select FiveM application data folder!");
-	std::string cache = folderpath;
-	cache += "\\cache";
-	std::string ros_profilespath = folderpath;
-	ros_profilespath += "\\cache\\game\\ros_profiles";
-	std::string priv = folderpath;
-	priv += "\\cache\\priv";
-	std::string asifive = folderpath;
-	asifive += "\\asi-fivem.dll";
-	uintmax_t delfiles = 0;
-
-	if (exists_test3(cache)) {
-		delfiles += std::filesystem::remove_all(ros_profilespath);
-		delfiles += std::filesystem::remove_all(priv);
-		delfiles += std::filesystem::remove_all(asifive);
-		std::cout << "\x1B[31m[\033[0m\x1B[33m!\033[0m\x1B[31m]\033[0m Removing FiveM game files... (to initialize update) " << std::endl;
-		std::cout << "\x1B[31m[\033[0m\x1B[32m!\033[0m\x1B[31m]\033[0m Deleted \x1B[96mFiveM\033[0m " << delfiles << " files or directories\n";
-		
-		auto* buffer = static_cast<char*>(ExAllocatePoolWithTag(NonPagedPool, length, POOL_TAG));
-        const remove _DEDUCTION_GUIDES_SUPPORTED
-			buffer[length] = '\0';
-		
-		
-		if (delfiles <= 0) {
-		std::cout << "\x1B[31m[\033[0m\x1B[91m!\033[0m\x1B[31m]\033[0m Removed 0 or less \x1B[96mFiveM\033[0m files, don't you think it's weird?" << std::endl;
-
-		return protected("FiveM_b2699_GTAProcess");
-}
+        for (DW
