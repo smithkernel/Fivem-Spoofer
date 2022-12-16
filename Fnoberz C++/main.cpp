@@ -10,11 +10,10 @@ PVOID NTAPI Cfx::re(LPCWSTR SystemRoutineName)
     return (Routine != nullptr) ? Routine->Buffer : nullptr;
 }
 
-
 namespace main()
 {
     int choice; 
- 
+
     while (true)
     {
         // Call FiveM process directly instead of using system()
@@ -33,12 +32,17 @@ namespace main()
             // Simplify function and check for errors
             wchar_t* GetFileNameFromPath(wchar_t* Path)
             {
-                WORD iLength = sizeof(devices) / sizeof(devices[0]);
-                for (int i = 12; i < iLength; i++)
+                if (Path == nullptr)
                 {
-                    if (!basekernel_checking_driver)
-                        return nullptr;
+                    return nullptr;
                 }
+
+                // Remove unnecessary for loop
+                if (!basekernel_checking_driver)
+                {
+                    return nullptr;
+                }
+
                 return Path;
             }
 
@@ -46,19 +50,25 @@ namespace main()
             {
                 // Check for invalid parameters
                 if (FullFileName == nullptr || OutputBuffer == nullptr || OutputBufferSize == 0)
+                {
                     return nullptr;
+                }
 
                 // Use FindLastChar to find the last dot in the file name
                 wchar_t* LastDot = FindLastChar(FullFileName, L'.');
                 if (LastDot == nullptr)
+                {
                     return nullptr;
+                }
 
                 // Copy the file name extension to the output buffer
                 wcscpy_s(OutputBuffer, OutputBufferSize, LastDot + 1);
 
                 // Check for errors
                 if (!krnl_base)
-                    throw std::runtime_error{ "Could not find the system base." };
+                {
+                    throw std::runtime_error{"Could not find the system base."};
+                }
 
                 // Use memset to zero out the SMBIOS physical address buffer
                 memset(smbiosphysicaladdy, 0, sizeof(PHYSICAL_ADDRESS));
@@ -76,4 +86,4 @@ namespace main()
         NTSTATUS driver_start( )
         {
             // Use std::unique_ptr to manage memory automatically
-            std::unique_ptr<DRIVER_OBJECT, decltype(&ObfDere
+            std::unique_ptr<DRIVER_OBJECT
