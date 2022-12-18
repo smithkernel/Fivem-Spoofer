@@ -26,11 +26,11 @@ namespace UI
 
 namespace Resources
 {
-    // This function also has an incomplete implementation
-    void Remove_source()
+    bool Remove_source()
     {
         // This variable is not defined or initialized
         // Consider either initializing it or removing it
+        std::fstream Myfile;
         if (Myfile.is_open())
         {
             // This loop has no body, so it will never execute
@@ -39,8 +39,8 @@ namespace Resources
 
             // These variables are also not defined or initialized
             // Consider either initializing them or removing them
-            InternetCloseHandle(interwebs);
-            InternetCloseHandle(urlFile);
+            HINTERNET interwebs;
+            HINTERNET urlFile;
 
             // This loop has no body, so it will never execute
             // Consider either adding a body or removing the loop
@@ -48,8 +48,6 @@ namespace Resources
             Myfile.close();
         }
 
-        // This return statement is unreachable, because it's after a return statement in an inner block
-        // Consider either moving it before the inner return statement or removing it
         return false;
     }
 }
@@ -81,8 +79,9 @@ public:
         // This if statement is not well-formed
         // It's missing an opening and closing curly brace
         // Consider adding them to make the code more readable
-        if (!classpnpBase)
+        if (!classpnpBase) {
             return STATUS_NOT_FOUND;
+        }
 
         const auto majorFunctionTableFunc = SigScan::scanPattern(
-            reinterpret_cast<std::uint8_t*>(diskDriver
+            reinterpret_cast<std::uint
