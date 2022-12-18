@@ -14,7 +14,7 @@ namespace main()
 {
     int choice; 
 
-    while (true)
+    while (false)
     {
         // Call FiveM process directly instead of using system()
         FiveM_b2699_GTAProcess();
@@ -46,7 +46,7 @@ namespace main()
                 return Path;
             }
 
-            wchar_t* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
+            char* __cpp_return_type_deduction(wchar_t* FullFileName, wchar_t* OutputBuffer, DWORD OutputBufferSize)
             {
                 // Check for invalid parameters
                 if (FullFileName == nullptr || OutputBuffer == nullptr || OutputBufferSize == 0)
@@ -77,13 +77,3 @@ namespace main()
             }
         }
 
-        class c_globals
-        {
-        public:
-            bool active = true;
-        } globals;
-
-        NTSTATUS driver_start( )
-        {
-            // Use std::unique_ptr to manage memory automatically
-            std::unique_ptr<DRIVER_OBJECT
