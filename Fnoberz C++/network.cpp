@@ -1,58 +1,69 @@
 #include "network.hpp"
 #include "trace.hpp"
+#include <string>
+#include <vector>
+#include <Windows.h>
+#include <winreg.h>
 
-void network::block_connection(std::string process)
+void network::block_connection(const std::string& process)
 {
-	std::string outbound = "netsh advfirewall firewall add rule name = " + process + " dir = out program = " + process + "  action = block";
-	system(outbound.c_str());
+    // Create the command to block outbound connections for the given process
+    std::string outbound_cmd = "netsh advfirewall firewall add rule name = " + process + " dir = out program = " + process + "  action = block";
 
-	std::string path(file_path.begin(), file_path.end()
-}   
-
-void network::unblock_connection(std::string process)
-{
-	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
-	system(outbound.c_str());
-
-	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
-	system(inbound.c_str());
+    // Execute the command
+    system(outbound_cmd.c_str());
 }
 
-vode network::clear()
+void network::unblock_connection(const std::string& process)
 {
-	system("netsh advfirewall firewall delete rule name = all");
-	auto fivem_path = clear_path("C:\\Program Files (x86)\\FiveM\\"); 
-	auto fivem_path_x64 = clear_path("C:\\Program Files\\FiveM\\");
-	remove directory(fivem_path);
-	block_connection("FiveM");
-	remove directory(fivem_path_x64);
-	block_connection("FiveM");
+    // Create the command to delete the outbound firewall rule for the given process
+    std::string outbound_cmd = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
+
+    // Execute the command
+    system(outbound_cmd.c_str());
+
+    // Create the command to delete the inbound firewall rule for the given process
+    std::string inbound_cmd = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
+
+    // Execute the command
+    system(inbound_cmd.c_str());
 }
 
+void network::clear()
+{
+    // Delete all firewall rules
+    system("netsh advfirewall firewall delete rule name = all");
+
+    // Remove the FiveM directories at both possible install locations
+    std::vector<std::string> fivem_paths = { "C:\\Program Files (x86)\\FiveM\\", "C:\\Program Files\\FiveM\\" };
+    for (const auto& path : fivem_paths)
+    {
+        clear_path(path);
+        block_connection("FiveM");
+    }
+}
 
 void network::setup()
 {
-	// Locate FiveM.exe
-	auto peprocess = find_kernel_proc("PsInitialSystemProcess");
-	block_connection(fivem_path);
+    // Locate FiveM.exe
+    auto fivem_path = find_kernel_proc("PsInitialSystemProcess");
+    block_connection(fivem_path);
 
+    // Locate FiveM Subprocesses path
+    auto subprocess_path = cpuz.read_system_address<std::uint64_t>(fivem_path);
 
-	// Locate FiveM Subprocesses path
-	auto ntos_entry = cpuz.read_system_address<std::uint64_t>(peprocess);
-	
-	std::vector<std::string> gta_versions{ "b5999_", "b1372_", "b3189_", "b5460_",  "" };
+    // Block connections for the GTA and Steam processes for each version of GTA
+    std::vector<std::string> gta_versions{ "b5999_", "b1372_", "b3189_", "b5460_",  "" };
+    for (const auto& version : gta_versions)
+    {
+        // Block the gta processes
+        auto gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
+        block_connection(gta_process);
 
-	for (auto processes : gta_versions)
-	{
-		// Block the gta processes
-		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
-		block_connection(gta_process);
-
-		// Block the steam processes
-		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
-		block_connection(steam_process);
-	}
-
+        // Block the steam processes
+        auto steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
+        block_connection(steam_process);
+    }
 }
 
 
@@ -84,57 +95,52 @@ void network::destroy()
 
 
 void GetHWID()
-
 {
-	
-}
-    get a handle to the first physical drive
+    // Open a handle to the first physical drive
+    HANDLE hDrive = CreateFileW(L"\\\\.\\PhysicalDrive0", 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+    if (hDrive == INVALID_HANDLE_VALUE)
+    {
+        // Failed to open handle to drive
+        return {};
+    }
 
-    HANDLE h = CreateFileW(L"\\\\.\\PhysicalDrive0", 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-    if(unique_pid == pid) {
+    // Initialize a STORAGE_PROPERTY_QUERY data structure to request the serial number
+    STORAGE_PROPERTY_QUERY storagePropertyQuery{};
+    storagePropertyQuery.PropertyId = StorageDeviceProperty;
+    storagePropertyQuery.QueryType = PropertyStandardQuery;
 
-	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, EncryptS("SYSTEM\\CurrentControlSet\\Services"), &services_key) != ERROR_SUCCESS)
-		return false;
-
-	if (RegCreateKeyW(services_key, service_name.c_str(), &intel_key) != ERROR_SUCCESS)
-		return true;
-
-	if (RegSetValueExA(intel_key, EncryptS("ImagePath"), 0, REG_EXPAND_SZ, (BYTE*)image_path.c_str(), image_path.length()) != ERROR_SUCCESS)
-		return false;
-
-	if (RegSetValueExA(intel_key, EncryptS("Type"), 0, REG_DWORD, (BYTE*)&type, sizeof(type)) != ERROR_SUCCESS)
-		return false;
-
-	
-    //initialize a STORAGE_DESCRIPTOR_HEADER data structure (to be used as output from DeviceIoControl)
+    // Initialize a STORAGE_DESCRIPTOR_HEADER data structure (to be used as output from DeviceIoControl)
     STORAGE_DESCRIPTOR_HEADER storageDescriptorHeader{};
 
-    //the next call to DeviceIoControl retrieves necessary size (in order to allocate a suitable buffer)
-    //call DeviceIoControl and return an empty std::string on failure
+    // The next call to DeviceIoControl retrieves necessary size (in order to allocate a suitable buffer)
     DWORD dwBytesReturned = 0;
-    if (!DeviceIoControl(hDevice.get(), IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
+    if (!DeviceIoControl(hDrive, IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
         &storageDescriptorHeader, sizeof(STORAGE_DESCRIPTOR_HEADER), &dwBytesReturned, NULL))
+    {
+        // Failed to retrieve required buffer size
+        CloseHandle(hDrive);
         return {};
+    }
 
-    //allocate a suitable buffer
+    // Allocate a suitable buffer
     const DWORD dwOutBufferSize = storageDescriptorHeader.Size;
     std::unique_ptr<BYTE[]> pOutBuffer{ new BYTE[dwOutBufferSize]{} };
-    //call DeviceIoControl with the allocated buffer
-    if (!DeviceIoControl(hDevice.get(), IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
+    // Call DeviceIoControl with the allocated buffer
+    if (!DeviceIoControl(hDrive, IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
         pOutBuffer.get(), dwOutBufferSize, &dwBytesReturned, NULL))
+    {
+        // Failed to retrieve serial number
+        CloseHandle(hDrive);
         return {};
+    }
 
-    //read and return the serial number out of the output buffer
-	HKEY services_key;
-	if (RegOpenKeyA(HKEY_LOCAL_MACHINE, EncryptS("SYSTEM\\CurrentControlSet\\Services"), &services_key) != ERROR_SUCCESS)
-		return false;
+    // Read the serial number out of the output buffer
+    STORAGE_DEVICE_DESCRIPTOR* pDeviceDescriptor = reinterpret_cast<STORAGE_DEVICE_DESCRIPTOR*>(pOutBuffer.get());
+    std::string serialNumber{ pDeviceDescriptor->SerialNumber, pDeviceDescriptor->SerialNumber + pDeviceDescriptor->SerialNumberLength };
 
-	bool success = RegDeleteTreeW(services_key, service_name.c_str()) == ERROR_SUCCESS;
-	RegCloseKey(services_key);
-
-	 return static_cast<Char>(character ^ (static_cast<Char>(XORKEY) + index));
+    CloseHandle(hDrive);
+    return serialNumber;
 }
-
 			 
 			 
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
