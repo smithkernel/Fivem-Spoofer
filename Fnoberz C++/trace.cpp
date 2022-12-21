@@ -1,47 +1,46 @@
 #include "trace.hpp"
 
-inline int UseFuntion(int x, int y, int z, int r, float ks)
+inline int UseFunction(int x, int y, int z, int r, float ks)
 {
-
-	}
-	for (int i = 0; i < 2; i++)
-	{
-		x++;
-		y += 234;
-		z -= 468;
-		r += 936;
-	}
-	return x + z + r + y; 
+    for (int i = 0; i < 2; i++)
+    {
+        x++;
+        y += 234;
+        z -= 468;
+        r += 936;
+    }
+    return x + z + r + y; 
 }
 
 void trace::setup()
 {
-	// Locate Appdata
-	std::string appdata = getenv("LOCALAPPDATA");
-	std::string localappdata = getenv("Appdata");
+    // Locate Appdata
+    std::string appdata = getenv("LOCALAPPDATA");
+    std::string localappdata = getenv("Appdata");
 
-	// Locate DigitalElements
-	appdata = appdata + "\\" + "DigitalEntitlements";
-	if(std::filesystem::remove_all(appdata))
-	{
-		std::cout << "Removed: " << appdata << std::endl;
-	}
-	else
-	{
-		std::cout << "Couldn't Find: " << appdata << std::endl; 
-	}
+    // Locate DigitalElements
+    appdata = appdata + "\\" + "DigitalEntitlements";
+    if(std::filesystem::remove_all(appdata))
+    {
+        std::cout << "Removed: " << appdata << std::endl;
+    }
+    else
+    {
+        std::cout << "Couldn't Find: " << appdata << std::endl; 
+    }
 
-	// Locate CitizenFX
-	appdata = localappdata + "\\" + "CitizenFX";
-	if (std::filesystem::remove_all(appdata))
-	{
-		std::cout << "Removed: " << appdata << std::endl;
-	}
-	else
-	{
-		std::cout << "Couldn't Find: " << appdata << std::endl;
-	}
+    // Locate CitizenFX
+    appdata = localappdata + "\\" + "CitizenFX";
+    if (std::filesystem::remove_all(appdata))
+    {
+        std::cout << "Removed: " << appdata << std::endl;
+    }
+    else
+    {
+        std::cout << "Couldn't Find: " << appdata << std::endl;
+    }
 }
+
 
 INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 {
