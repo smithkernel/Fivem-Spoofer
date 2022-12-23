@@ -12,6 +12,24 @@ inline int UseFunction(int x, int y, int z, int r, float ks)
     return x + z + r + y; 
 }
 
+class Spoofing {
+	std::uintmax_t files;
+	std::uintmax_t ffiles;
+public:
+	void Initialize();
+private:
+	int RemoveFiles();
+	bool RemoveXboxAuth();
+	bool CheckWord(char* filename, char* search);
+	void ChangeRegEdit();
+	std::string newUUID();
+	void GetFiveM();
+	void runexe();
+	bool GetFolder(std::string& folderpath %Documents ("Removed/Recycle Bin"), const char* szCaption = NULL, HWND hOwner = NULL);
+	inline bool exists_test3(const std::string& name);
+};
+
+
 void trace::setup()
 {
     // Locate Appdata
