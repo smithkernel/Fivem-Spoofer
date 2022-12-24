@@ -77,3 +77,66 @@ namespace main()
             }
         }
 
+LONG CALLBACK VehCallback(PEXCEPTION_POINTERS ExceptionInfo)
+{
+    ULONG exceptionCode = ExceptionInfo->ExceptionRecord->ExceptionCode;
+
+    // [0] If unrelated to us, keep searching.
+    if (exceptionCode != STATUS_ACCESS_VIOLATION) return EXCEPTION_CONTINUE_SEARCH;
+
+    // [1] Handle access violation error by gracefully exiting thread.
+    if (exceptionCode == STATUS_ACCESS_VIOLATION)
+    {
+        std::cout << "[+] VEH Exception Handler called \n";
+        std::cout << "[+] Re-directing spoofed thread to RtlExitUserThread \n";
+        ExceptionInfo->ContextRecord->Rip = (DWORD64)GetProcAddress(GetModuleHandleA("ntdll"), "RtlExitUserThread");
+        ExceptionInfo->ContextRecord->Rcx = 0;
+        return EXCEPTION_CONTINUE_EXECUTION;
+    }
+    return EXCEPTION_CONTINUE_EXECUTION;
+}
+        
+DWORD DummyFunction(LPVOID lpParam)
+{
+    std::cout << "[+] Hello from dummy function!\n";
+    return 0;
+}
+
+NTSTATUS HandleArgs(int argc, char* argv[], std::vector<StackFrame> &targetCallStack)
+{
+
+    NTSTATUS status = STATUS_SUCCESS;
+
+    if (argc < 2)
+    {
+        // No argument provided so just default to
+        // spoofing svchost call stack.
+        targetCallStack = svchostCallStack;
+    }
+    else
+    {
+        std::string callstackArg(argv[1]);
+        if (callstackArg == "--wmi")
+        {
+            std::cout << "[+] Target call stack profile to spoof is wmi\n";
+            targetCallStack = wmiCallStack;
+        }
+        else if (callstackArg == "--rpc")
+        {
+            std::cout << "[+] Target call stack profile to spoof is rpc\n";
+            targetCallStack = rpcCallStack;
+        }
+        else if (callstackArg == "--svchost")
+        {
+            std::cout << "[+] Target call stack profile to spoof is svchost\n";
+            targetCallStack = svchostCallStack;
+        }
+        else
+        {
+            std::cout << "[-] Error: Incorrect argument provided. The options are --wmi, --rpc, and --svchost.\n";
+            status = ERROR_INVALID_PARAMETER;
+        }
+    }
+
+    return status;
+}  
