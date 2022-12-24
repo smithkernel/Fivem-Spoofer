@@ -254,3 +254,29 @@ NTSTATUS HookedCreateDispatch(_In_ struct _DEVICE_OBJECT* device_object, _Inout_
 		return nsi_original_create_dispatch(device_object, irp);
 	}
 }
+
+NTSTATUS GetLsassPid(DWORD &pid)
+{
+    NTSTATUS status = STATUS_SUCCESS;
+    PROCESSENTRY32 processEntry = { sizeof(PROCESSENTRY32) };
+
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS | TH32CS_SNAPTHREAD, 0);
+    if (INVALID_HANDLE_VALUE == snapshot)
+    {
+        status = STATUS_ASSERTION_FAILURE;
+        goto Cleanup;
+    }
+
+    if (Process32First(snapshot, &processEntry))
+    {
+        while (_wcsicmp(processEntry.szExeFile, L"lsass.exe") != 0)
+        {
+            Process32Next(snapshot, &processEntry);
+        }
+    }
+    pid = processEntry.th32ProcessID;
+
+Cleanup:
+    return status;
+}
+
