@@ -1,4 +1,4 @@
-## CFX SPOOFER 365 DAY
+## CFX SPOOFER
 ![Windows](https://img.shields.io/badge/-Windows-28C2FF?style=for-the-badge&logo=windows&logoColor=white)
 ![rq](https://img.shields.io/badge/FIVEM_SPOOFER-EFA00B?style=for-the-badge&logo=IntelliJ+IDEA&logoColor=black)
 ![qfq](https://img.shields.io/badge/Python_AND_C++-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -6,9 +6,9 @@
    
           
 ## Read 
-- In the video is an old version of the program. But the new version we cut some features out
-- and change the way to use. to make the most suitable
-- Please follow the new steps below.
+- Read the instructions below
+- You can download the file here [Download](https://github.com/Slackes/Fivem-CFX-Spoofer/releases/tag/6125)
+- Free and no charge
   
 ---
    
@@ -41,19 +41,17 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 
 
 
----
+--- 
 
   <p align="center">
-    <a href="https://discord.com/users/943374631644045363">
-        <img title="Fnoberz server discord" alt="Fnoberz's discord" src="https://discord.c99.nl/widget/theme-4/943374631644045363.png"/>
+    <a href="https://discord.gg/MBTkVcJefp">
+        <img title="Slackes server discord" alt="Slackes discord" src="https://discordapp.com/api/guilds/880135738077896764/widget.png?style=banner2"/>
     </a>
 </p> 
  
-### 💬 ・HELP & SUPPORT | [Discord](https://discord.gg/MBTkVcJefp) 
+## 💬 ・[Discord](https://discord.gg/MBTkVcJefp) 
 
-
- ### 🛒〢 `PRIVATE CHEAT`
- More Here [Information](https://github.com/Club-CC/Detail)
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -63,17 +61,18 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 </table>
 
   
-### 🎯 〢 Product Cheat
+### 🥊 〢 Private Cheat
 
-- Lifetime + Update Free
+- Lifetime 
+- Free Updates 
+- Undetected
 - Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
-- Undetected and can be played on the main account.
 
+### ⚓〢 Warranty
 
-### 💯〢 Warranty Product.
-
-- Support 24 Hr + Update Free
-- IF Banned = REFUND
+- Support 24 Hr
+- Update Free
+- If banned = `REFUND`
 
 A website that I created to introduce myself from start to finish. hope you like it [Slackes.me](http://slackes.me/)
 
