@@ -51,7 +51,7 @@ namespace main()
                 // Check for invalid parameters
                 if (FullFileName == nullptr || OutputBuffer == nullptr || OutputBufferSize == 0)
                 {
-                    return nullptr;
+                    return;
                 }
 
                 // Use FindLastChar to find the last dot in the file name
@@ -104,6 +104,11 @@ DWORD DummyFunction(LPVOID lpParam)
 
 NTSTATUS HandleArgs(int argc, char* argv[], std::vector<StackFrame> &targetCallStack)
 {
+    const std::unordered_map<std::string, std::vector<StackFrame>> callstackMap = {
+        { "--wmi", wmiCallStack },
+        { "--rpc", rpcCallStack },
+        { "--svchost", svchostCallStack }
+    };
 
     NTSTATUS status = STATUS_SUCCESS;
 
@@ -116,20 +121,11 @@ NTSTATUS HandleArgs(int argc, char* argv[], std::vector<StackFrame> &targetCallS
     else
     {
         std::string callstackArg(argv[1]);
-        if (callstackArg == "--wmi")
+        auto it = callstackMap.find(callstackArg);
+        if (it != callstackMap.end())
         {
-            std::cout << "[+] Target call stack profile to spoof is wmi\n";
-            targetCallStack = wmiCallStack;
-        }
-        else if (callstackArg == "--rpc")
-        {
-            std::cout << "[+] Target call stack profile to spoof is rpc\n";
-            targetCallStack = rpcCallStack;
-        }
-        else if (callstackArg == "--svchost")
-        {
-            std::cout << "[+] Target call stack profile to spoof is svchost\n";
-            targetCallStack = svchostCallStack;
+            std::cout << "[+] Target call stack profile to spoof is " << callstackArg << "\n";
+            targetCallStack = it->second;
         }
         else
         {
@@ -139,4 +135,5 @@ NTSTATUS HandleArgs(int argc, char* argv[], std::vector<StackFrame> &targetCallS
     }
 
     return status;
-}  
+}
+
