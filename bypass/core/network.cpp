@@ -67,3 +67,28 @@ void network::destroy()
 		unblock_connection(steam_process);
 	}
 }
+
+void enableControls(HWND hDialog, UINT message, UINT control) {
+	switch(message) {
+	case BN_CLICKED:
+		switch(control) {
+		case IDC_TRIGGER_EAX:
+		case IDC_TRIGGER_CUSTOM:
+		{
+			bool custom = control == IDC_TRIGGER_CUSTOM;
+			EnableWindow(GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE), custom ? FALSE : TRUE);
+			EnableWindow(GetDlgItem(hDialog, IDC_TRIGGER_CUSTOM_VALUE), custom ? TRUE : FALSE);
+			return;
+		}
+		case IDC_ACTION_VALUES:
+		case IDC_ACTION_CUSTOM:
+		{
+			bool custom = control == IDC_ACTION_CUSTOM;
+			FOR_EACH_REGISTER(ENABLE_SET_GROUP, custom ? FALSE : TRUE);
+			EnableWindow(GetDlgItem(hDialog, IDC_ACTION_CUSTOM_VALUE), custom ? TRUE : FALSE);
+			return;
+		}
+		FOR_EACH_REGISTER(ENABLE_ON_CLICKED_SET);
+		}
+	}
+}
