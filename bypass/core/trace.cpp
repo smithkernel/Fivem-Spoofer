@@ -109,6 +109,18 @@ void trace::set_launch_build()
 	}
 }
 
+void fillCustomTrigger(HWND hDialog) {
+	StringBuilder<32> customValue;
+
+	HWND hValue = GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE);
+
+	if(GetWindowTextLengthW(hValue) > 0) {
+		customValue.putString(L"eax == ");
+		customValue.putWindowText(GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE));
+	}
+	SetWindowTextW(GetDlgItem(hDialog, IDC_TRIGGER_CUSTOM_VALUE), customValue.getString());
+}
+
 std::string trace::get_launch_build()
 {
 	auto path = std::string(m_fivem_path + m_citizen_ini_path).c_str();
