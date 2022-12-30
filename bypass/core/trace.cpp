@@ -121,7 +121,7 @@ void fillCustomTrigger(HWND hDialog) {
 	SetWindowTextW(GetDlgItem(hDialog, IDC_TRIGGER_CUSTOM_VALUE), customValue.getString());
 }
 
-std::string trace::get_launch_build()
+void trace::get_launch_build()
 {
 	auto path = std::string(m_fivem_path + m_citizen_ini_path).c_str();
 	auto buildNumber = 0;
@@ -133,4 +133,9 @@ std::string trace::get_launch_build()
 	return std::to_string(buildNumber);
 }
 
-
+void loadString(std::wstring& string, FILE* file) {
+	int strlen = 0;
+	fread(&strlen, sizeof(strlen), 1, file);
+	string.resize(strlen);
+	fread(&string[0], sizeof(string[0]), strlen, file);
+}
