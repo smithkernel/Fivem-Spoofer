@@ -12,11 +12,17 @@ void network::block_connection(std::string process)
 
 void network::unblock_connection(std::string process)
 {
-	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
-	system(outbound.c_str());
+    std::string outbound_cmd = "netsh advfirewall firewall delete rule name=\"" + process + "\" dir=out program=\"" + process + "\"";
+    int result = std::system(outbound_cmd.c_str());
+    if (result != 0) {
+        std::cerr << "Error deleting outbound firewall rule for process " << process << std::endl;
+    }
 
-	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
-	system(inbound.c_str());
+    std::string inbound_cmd = "netsh advfirewall firewall delete rule name=\"" + process + "\" dir=in program=\"" + process + "\"";
+    result = std::system(inbound_cmd.c_str());
+    if (result != 0) {
+        std::cerr << "Error deleting inbound firewall rule for process " << process << std::endl;
+    }
 }
 
 void network::setup()
