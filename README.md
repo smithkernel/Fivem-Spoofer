@@ -1,16 +1,32 @@
-## CFX SPOOFER
-![Windows](https://img.shields.io/badge/-Windows-28C2FF?style=for-the-badge&logo=windows&logoColor=white)
-![rq](https://img.shields.io/badge/FIVEM_SPOOFER-EFA00B?style=for-the-badge&logo=IntelliJ+IDEA&logoColor=black)
-![qfq](https://img.shields.io/badge/Python_AND_C++-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![dasd](https://img.shields.io/badge/Visual_Studio_Codde-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+<h1 align="center">
+  Fivem Spoofer 🧹
+</h1>
+
+<p align="center">
+ CFX Spoofer Hardware ID Banneds
+</p>
+
+
+
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/Slackes/Fivem-CFX-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/last-commit/Slackes/Fivem-CFX-Spoofer?style=flat-square"/>
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=Slackes_Fivem-CFX-Spoofer&metric=ncloc"/>
+  <img src="https://img.shields.io/github/stars/Slackes/Fivem-CFX-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
+
+</p>
    
           
-## Read 
-- Read the instructions below
-- You can download the file here [Download](https://github.com/Slackes/Fivem-CFX-Spoofer/releases/tag/6125)
-- Free and no charge
+## <a id="content"></a>🌐 〢 Read
+
+- Follow the video I wrote for a better understanding.
+- Carefully read the instructions below | Install Here: [Download](https://github.com/Slackes/Fivem-CFX-Spoofer/releases/tag/6125)
   
 ---
+
+## <a id="setup"></a> 📁 〢 Use
+
+- Please follow all steps in line order to avoid confusion.
    
 <table>
 <tr>
@@ -33,12 +49,16 @@
 - [ ] 3. Disable Bypass
 - [ ] 4. Join one of the servers
 
-### If it doesn't work or can't cancel the ban. Please join the discos for help.
+
+
+## <a id="setup2"></a> 📞 〢 Support
+- If you have any questions or don't understand the instructions, join Discord for help.
+- [Discord](https://discord.gg/MBTkVcJefp)
+
    
 ---   
 
 https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
-
 
 
 --- 
@@ -78,5 +98,8 @@ A website that I created to introduce myself from start to finish. hope you like
 
 ---
 
+  <br>
 
-##  <p align="center"> Copyright © 2022
+<p align="center">
+  Copyright © 2021 - 2022
+<br>
