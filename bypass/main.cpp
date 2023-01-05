@@ -87,7 +87,6 @@ int main()
 
 }
 
-// sets up wmi api and sets pointer to service and pointer to locator
 void setup_wmi_api(IWbemLocator** ppLoc, IWbemServices** ppSvc) {
 	// launch COM
 	HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
@@ -95,7 +94,13 @@ void setup_wmi_api(IWbemLocator** ppLoc, IWbemServices** ppSvc) {
 		printf("Failed to initialize COM library. Error code = %x.\n", hr);
 		exit(1);
 	}
+
 	hr = CoInitializeSecurity(NULL, -1, NULL, NULL, RPC_C_AUTHN_LEVEL_CONNECT, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE, 0);
+	if (FAILED(hr)) {
+		printf("Failed to initialize COM security. Error code = %x.\n", hr);
+		CoUninitialize();
+		exit(1);
+	}
 
 	hr = CoCreateInstance(CLSID_WbemLocator, NULL, CLSCTX_INPROC_SERVER, IID_IWbemLocator, (LPVOID *) ppLoc);
 	if (FAILED(hr)) {
@@ -103,6 +108,7 @@ void setup_wmi_api(IWbemLocator** ppLoc, IWbemServices** ppSvc) {
 		CoUninitialize();
 		exit(1);
 	}
+}
 
     // Connect to the root\CIMV2 namespace with the current user.
     hr = (*ppLoc)->ConnectServer(BSTR(L"ROOT\\CIMV2"), NULL, NULL, NULL, 0, NULL, NULL, ppSvc);
