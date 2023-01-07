@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
- CFX Spoofer Hardware ID Banneds 365 Day & 13 Day### 📌〢 Warranty
+ CFX Spoofer Hardware ID Banneds 365 Day & 13 Day
 </p>
 
 
