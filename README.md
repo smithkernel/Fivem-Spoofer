@@ -1,9 +1,9 @@
 <h1 align="center">
-  Fivem Spoofer 🧹
+  Fivem SPOOFER 🧹
 </h1>
 
 <p align="center">
- CFX Spoofer Hardware ID Banneds
+ CFX Spoofer Hardware ID Banneds 365 Day & 13 Day### 📌〢 Warranty
 </p>
 
 
@@ -51,10 +51,10 @@
 
 
 
-## <a id="setup2"></a> 📞 〢 Support
-- If the free version does not work The last option is to pay. Read more below.
-- If you have any questions or don't understand the instructions, join Discord for help.
-- [Discord](https://discord.gg/MBTkVcJefp)
+## <a id="setup2"></a> 🗒 〢 Product
+- If the free version does not work You can pay to buy a personal project.
+- Safe  on main account without getting banned / no need to turn off virus scan Scroll down to the bottom to read more.
+- [Discord](https://discord.gg/MBTkVcJefp) 
 
    
 ---   
@@ -72,7 +72,7 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
  
 ## 💬 ・[Discord](https://discord.gg/MBTkVcJefp) 
 
- ### 🛒〢 `PRODUCT`
+ ### 🛒〢 `SHOP`
  
 <table>
 <tr>
@@ -89,7 +89,7 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 - Undetected
 - Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
 
-### ⚓〢 Warranty
+### 📌〢 Warranty
 
 - Support 24 Hr
 - Update Free
