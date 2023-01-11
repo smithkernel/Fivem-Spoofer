@@ -1,9 +1,9 @@
 <h1 align="center">
-  Fivem SPOOFER 🧹
+  CFX Spoofer 🥱
 </h1>
 
 <p align="center">
- CFX Spoofer Hardware ID Banneds 365 Day & 13 Day
+ UNBAN HWID / 365 DAY / 13 DAY BY. CFX Banned
 </p>
 
 
