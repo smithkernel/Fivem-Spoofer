@@ -10,11 +10,10 @@
 #include <string>
 #include <vector>
 #include <cctype>
+#include <algorithm>
 
-#include <shlobj_core.h>
+#include <shlobj.h>
 #include <fstream>
-#include <format>
 
-#include <netfw.h>
-
+using namespace std::filesystem;
 
