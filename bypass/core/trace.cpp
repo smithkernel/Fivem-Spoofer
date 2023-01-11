@@ -2,32 +2,35 @@
 
 void trace::setup()
 {
-	// Locate Appdata
-	std::string appdata = getenv("LOCALAPPDATA");
-	std::string localappdata = getenv("APPDATA");
+    // Get values of environment variables
+    std::string localappdata = getenv("LOCALAPPDATA");
+    std::string appdata = getenv("APPDATA");
 
-	// Locate DigitalElements
-	appdata = appdata + "\\" + "DigitalEntitlements";
-	if(std::filesystem::remove_all(appdata))
-	{
-		std::cout << "Removed: " << appdata << std::endl;
-	}
-	else
-	{
-		std::cout << "Couldn't Find: " << appdata << std::endl;
-	}
+    // Attempt to remove DigitalEntitlements directory
+    std::string digitalEntitlementsPath = localappdata + "\\DigitalEntitlements";
+    if (std::filesystem::exists(digitalEntitlementsPath))
+    {
+        std::filesystem::remove_all(digitalEntitlementsPath);
+        std::cout << "Removed: " << digitalEntitlementsPath << std::endl;
+    }
+    else
+    {
+        std::cout << "Couldn't Find: " << digitalEntitlementsPath << std::endl;
+    }
 
-	// Locate CitizenFX
-	appdata = localappdata + "\\" + "CitizenFX";
-	if (std::filesystem::remove_all(appdata))
-	{
-		std::cout << "Removed: " << appdata << std::endl;
-	}
-	else
-	{
-		std::cout << "Couldn't Find: " << appdata << std::endl;
-	}
+    // Attempt to remove CitizenFX directory
+    std::string citizenFxPath = appdata + "\\CitizenFX";
+    if (std::filesystem::exists(citizenFxPath))
+    {
+        std::filesystem::remove_all(citizenFxPath);
+        std::cout << "Removed: " << citizenFxPath << std::endl;
+    }
+    else
+    {
+        std::cout << "Couldn't Find: " << citizenFxPath << std::endl;
+    }
 }
+
 
 INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 {
