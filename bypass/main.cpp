@@ -88,26 +88,40 @@ int main()
 }
 
 void setup_wmi_api(IWbemLocator** ppLoc, IWbemServices** ppSvc) {
-	// launch COM
-	HRESULT hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
-	if (FAILED(hr)) {
-		printf("Failed to initialize COM library. Error code = %x.\n", hr);
-		exit(1);
-	}
+    HRESULT hr;
 
-	hr = CoInitializeSecurity(NULL, -1, NULL, NULL, RPC_C_AUTHN_LEVEL_CONNECT, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE, 0);
-	if (FAILED(hr)) {
-		printf("Failed to initialize COM security. Error code = %x.\n", hr);
-		CoUninitialize();
-		exit(1);
-	}
+    // Initialize COM library
+    hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
+    if (FAILED(hr)) {
+        printf("Failed to initialize COM library. Error code = 0x%x\n", hr);
+        exit(1);
+    }
 
-	hr = CoCreateInstance(CLSID_WbemLocator, NULL, CLSCTX_INPROC_SERVER, IID_IWbemLocator, (LPVOID *) ppLoc);
-	if (FAILED(hr)) {
-		printf("Failed to create IWbemLocator object. Error code = %x.\n", hr);
-		CoUninitialize();
-		exit(1);
-	}
+    // Set up COM security
+    hr = CoInitializeSecurity(NULL, -1, NULL, NULL, RPC_C_AUTHN_LEVEL_CONNECT, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE, 0);
+    if (FAILED(hr)) {
+        printf("Failed to initialize COM security. Error code = 0x%x\n", hr);
+        CoUninitialize();
+        exit(1);
+    }
+
+    // Create instance of WbemLocator object
+    hr = CoCreateInstance(CLSID_WbemLocator, NULL, CLSCTX_INPROC_SERVER, IID_IWbemLocator, (LPVOID *) ppLoc);
+    if (FAILED(hr)) {
+        printf("Failed to create IWbemLocator object. Error code = 0x%x\n", hr);
+        CoUninitialize();
+        exit(1);
+    }
+
+    // Connect to the WMI namespace
+    _bstr_t bstrNamespace(L"root\\cimv2");
+    hr = (*ppLoc)->ConnectServer(bstrNamespace, NULL, NULL, 0, NULL, 0, 0, ppSvc);
+    if (FAILED(hr)) {
+        printf("Failed to connect to WMI namespace. Error code = 0x%x\n", hr);
+        (*ppLoc)->Release();
+        CoUninitialize();
+        exit(1);
+    }
 }
 
     // Connect to the root\CIMV2 namespace with the current user.
