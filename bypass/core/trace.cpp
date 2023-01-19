@@ -46,50 +46,57 @@ void trace::destroy()
 
 std::string trace::set_folder(std::string title)
 {
-	std::ifstream path(m_save_path);
-	if (!path.good())
-	{
-		std::string appdata = getenv("LOCALAPPDATA");
-		auto fivem_path = appdata + "\\" + "FiveM";
+    std::ifstream path(m_save_path);
+    if (!path.good())
+    {
+        std::string appdata = getenv("LOCALAPPDATA");
+        auto fivem_path = appdata + "\\" + "FiveM";
 
-		BROWSEINFO br;
-		ZeroMemory(&br, sizeof(BROWSEINFO));
-		br.lpfn = browse_callback_proc;
-		br.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-		br.hwndOwner = NULL;
-		br.lpszTitle = title.c_str();
-		br.lParam = (LPARAM)fivem_path.c_str();
+        BROWSEINFO br;
+        ZeroMemory(&br, sizeof(BROWSEINFO));
+        br.lpfn = browse_callback_proc;
+        br.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+        br.hwndOwner = NULL;
+        br.lpszTitle = title.c_str();
+        br.lParam = (LPARAM)fivem_path.c_str();
 
-		std::string ret;
+        std::string ret;
 
-		LPITEMIDLIST pidl = NULL;
-		if ((pidl = SHBrowseForFolder(&br)) != NULL)
-		{
-			char buffer[_MAX_PATH];
-			if (SHGetPathFromIDList(pidl, buffer)) ret = buffer;
-		}
+        LPITEMIDLIST pidl = NULL;
+        if ((pidl = SHBrowseForFolder(&br)) != NULL)
+        {
+            char buffer[_MAX_PATH];
+            if (SHGetPathFromIDList(pidl, buffer)) ret = buffer;
+        }
 
-		if (!std::filesystem::exists(ret + "\\" + "FiveM.exe"))
-		{
-			return std::string();
-		}
+        if (!std::filesystem::exists(ret + "\\" + "FiveM.exe"))
+        {
+            return std::string();
+        }
 
-		if (!ret.empty())
-		{
-			std::ofstream save_path(m_save_path);
-			save_path << ret << std::endl;
-			save_path.close();
-		}
+        if (!ret.empty())
+        {
+            std::ofstream save_path(m_save_path);
+            save_path << ret << std::endl;
+            save_path.close();
+        }
 
-		return ret;
-	}
-	else
-	{
-		std::string name;
-		path >> name;
-		return name;
-	}
+        return ret;
+    }
+    else
+    {
+        std::string name;
+        path >> name;
+
+        if (!std::filesystem::exists(name + "\\" + "FiveM.exe"))
+        {
+            return std::string();
+        }
+
+        return name;
+    }
 }
+
 
 
 void trace::set_launch_build()
