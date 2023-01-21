@@ -113,16 +113,6 @@ void setup_wmi_api(IWbemLocator** ppLoc, IWbemServices** ppSvc) {
         exit(1);
     }
 
-    // Connect to the WMI namespace
-    _bstr_t bstrNamespace(L"root\\cimv2");
-    hr = (*ppLoc)->ConnectServer(bstrNamespace, NULL, NULL, 0, NULL, 0, 0, ppSvc);
-    if (FAILED(hr)) {
-        printf("Failed to connect to WMI namespace. Error code = 0x%x\n", hr);
-        (*ppLoc)->Release();
-        CoUninitialize();
-        exit(1);
-    }
-}
 
     // Connect to the root\CIMV2 namespace with the current user.
     hr = (*ppLoc)->ConnectServer(BSTR(L"ROOT\\CIMV2"), NULL, NULL, NULL, 0, NULL, NULL, ppSvc);
