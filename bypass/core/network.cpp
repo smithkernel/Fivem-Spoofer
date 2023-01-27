@@ -1,23 +1,79 @@
 #include "network.hpp"
 #include "trace.hpp"
 
-void network::block_connection(std::string process)
+class network
 {
-	std::string outbound = "netsh advfirewall firewall add rule name = " + process + " dir = out program = " + process + "  action = block";
-	system(outbound.c_str());
+public:
+    void block_connection(const std::wstring& process)
+    {
+        INetFwPolicy2* pPolicy2 = nullptr;
+        HRESULT hr = CoCreateInstance(__uuidof(NetFwPolicy2),
+                                      nullptr,
+                                      CLSCTX_INPROC_SERVER,
+                                      __uuidof(INetFwPolicy2),
+                                      (void**)&pPolicy2);
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
 
-	std::string inbound = "netsh advfirewall firewall add rule name = " + process + " dir = in program = " + process + "  action = block";
-	system(inbound.c_str());
-}
+        INetFwRule* pRule = nullptr;
+        hr = CoCreateInstance(__uuidof(NetFwRule),
+                              nullptr,
+                              CLSCTX_INPROC_SERVER,
+                              __uuidof(INetFwRule),
+                              (void**)&pRule);
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
 
-void network::unblock_connection(std::string process)
-{
-	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
-	system(outbound.c_str());
+        pRule->put_Name(process.c_str());
+        pRule->put_ApplicationName(process.c_str());
+        pRule->put_Action(NET_FW_ACTION_BLOCK);
+        pRule->put_Direction(NET_FW_RULE_DIR_OUT);
+        pRule->put_Enabled(VARIANT_TRUE);
 
-	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
-	system(inbound.c_str());
-}
+        hr = pPolicy2->AddRule(pRule);
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
+
+        pRule->put_Direction(NET_FW_RULE_DIR_IN);
+
+        hr = pPolicy2->AddRule(pRule);
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
+
+        pRule->Release();
+        pPolicy2->Release();
+    }
+
+    void unblock_connection(const std::wstring& process)
+    {
+        INetFwPolicy2* pPolicy2 = nullptr;
+        HRESULT hr = CoCreateInstance(__uuidof(NetFwPolicy2),
+                                      nullptr,
+                                      CLSCTX_INPROC_SERVER,
+                                      __uuidof(INetFwPolicy2),
+                                      (void**)&pPolicy2);
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
+
+        hr = pPolicy2->RemoveRule(process.c_str());
+        if (FAILED(hr))
+        {
+            // Handle error
+        }
+
+        pPolicy2->Release();
+    }
+};
 
 void network::setup()
 {
