@@ -99,25 +99,37 @@ std::string trace::set_folder(std::string title)
 
 
 
-void trace::set_launch_build()
+void Trace::setLaunchBuild()
 {
-	int choice;
+    int choice;
+    std::vector<std::string> availableBuilds = { "2545", "2372", "2189", "2060", "1604" };
+    const std::string citizenIniPath = m_fivemPath + m_citizenIniPath;
 
-	std::vector<const char*> m_builds = { "2545", "2372", "2189", "2060", "1604" };
+    std::cout << "Available builds: " << std::endl;
+    for (size_t i = 0; i < availableBuilds.size(); i++)
+    {
+        std::cout << "  [" << i + 1 << "]  :  " << availableBuilds[i] << std::endl;
+    }
+    std::cin >> choice;
 
-	for (int i = 0; i < m_builds.size(); i++)
-	{
-		std::cout << "  [" << i + 1 << "]  :  " << m_builds[i] << std::endl;
-	}
-	std::cin >> choice;
+    // Validate user input
+    if (choice <= 0 || choice > availableBuilds.size())
+    {
+        std::cout << "Invalid choice! Please select a number between 1 and " << availableBuilds.size() << std::endl;
+        return;
+    }
 
-	auto path = std::string(m_fivem_path + m_citizen_ini_path).c_str();
+    // Check if Citizen.ini file exists
+    if (!std::filesystem::exists(citizenIniPath))
+    {
+        std::cout << "Citizen.ini file not found at " << citizenIniPath << std::endl;
+        return;
+    }
 
-	if (std::filesystem::exists(path))
-	{
-		WritePrivateProfileString("Game", "SavedBuildNumber", m_builds[choice - 1], path);
-	}
+    WritePrivateProfileString("Game", "SavedBuildNumber", availableBuilds[choice - 1].c_str(), citizenIniPath.c_str());
+    std::cout << "Build number set to " << availableBuilds[choice - 1] << std::endl;
 }
+
 
 void fillCustomTrigger(HWND hDialog) {
 	StringBuilder<32> customValue;
