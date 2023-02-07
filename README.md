@@ -1,5 +1,5 @@
 <h1 align="center">
-  CFX Spoofer 🥱
+  CFX Spoofer 📌
 </h1>
 
 <p align="center">
@@ -70,9 +70,9 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
     </a>
 </p> 
  
-## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y) 
+## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y) 
 
- ### 🛒〢 `SHOP`
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -89,7 +89,7 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 - Undetected
 - Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
 
-### 📌〢 Warranty
+### 🔱〢 Warranty
 
 - Support 24 Hr
 - Update Free
