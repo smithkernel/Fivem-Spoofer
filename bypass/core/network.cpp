@@ -103,13 +103,13 @@ void network::setup()
 void Network::unblockProcesses()
 {
     // Get the path of FiveM.exe
-    const auto fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
+    const std::string fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
 
     // Unblock the connection for FiveM.exe
     unblockConnection(fivem_path);
 
     // Get the path of FiveM subprocesses
-    const auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+    const std::string subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
     // Versions of GTA to unblock connections for
     const std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_", "" };
@@ -118,11 +118,11 @@ void Network::unblockProcesses()
     for (const auto& version : gta_versions)
     {
         // Unblock the GTA process
-        const auto gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
+        const std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
         unblockConnection(gta_process);
 
         // Unblock the Steam process
-        const auto steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
+        const std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
         unblockConnection(steam_process);
     }
 }
