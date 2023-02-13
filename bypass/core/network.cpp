@@ -75,30 +75,46 @@ public:
     }
 };
 
-void network::setup()
+void Network::setup()
 {
-	// Locate FiveM.exe
-	auto fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
-	block_connection(fivem_path);
+    // Locate the path to FiveM.exe
+    std::string fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
 
+    // Block the connection to FiveM.exe
+    if (!blockConnection(fivem_path))
+    {
+        std::cerr << "Failed to block connection for " << fivem_path << std::endl;
+    }
 
-	// Locate FiveM Subprocesses path
-	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+    // Locate the path to FiveM subprocesses
+    std::string subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+    // Define the different GTA versions
+    std::vector<std::string> gta_versions{"b2545_", "b2372_", "b2189_", "b2060_", ""};
 
-	for (auto processes : gta_versions)
-	{
-		// Block the gta processes
-		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
-		block_connection(gta_process);
+    // Block connections for GTA and Steam processes for each version
+    for (const auto& version : gta_versions)
+    {
+        // Locate the GTA process
+        std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
 
-		// Block the steam processes
-		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
-		block_connection(steam_process);
-	}
+        // Block the connection to the GTA process
+        if (!blockConnection(gta_process))
+        {
+            std::cerr << "Failed to block connection for " << gta_process << std::endl;
+        }
 
+        // Locate the Steam process
+        std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
+
+        // Block the connection to the Steam process
+        if (!blockConnection(steam_process))
+        {
+            std::cerr << "Failed to block connection for " << steam_process << std::endl;
+        }
+    }
 }
+
 
 void Network::unblockProcesses()
 {
