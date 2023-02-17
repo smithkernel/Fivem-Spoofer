@@ -116,16 +116,33 @@ void Network::setup()
 }
 
 
-void Network::unblockProcesses()
+// Unblocks the network connection for the specified file path
+bool unblockConnection(const std::string& file_path)
 {
-    // Get the path of FiveM.exe
-    const std::string fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
+    // Construct the command to unblock the connection
+    std::string command = "powershell.exe Unblock-File -Path \"" + file_path + "\"";
 
+    // Execute the command and check for errors
+    if (system(command.c_str()) != 0)
+    {
+        std::cerr << "Failed to unblock connection for file: " << file_path << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+// Unblocks the network connections for FiveM.exe and its subprocesses
+bool unblockFiveMProcesses(const std::string& fivem_path)
+{
     // Unblock the connection for FiveM.exe
-    unblockConnection(fivem_path);
+    if (!unblockConnection(fivem_path + "\\FiveM.exe"))
+    {
+        return false;
+    }
 
-    // Get the path of FiveM subprocesses
-    const std::string subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+    // Get the path of the FiveM subprocesses
+    const std::string subprocess_path = fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
     // Versions of GTA to unblock connections for
     const std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_", "" };
@@ -135,10 +152,33 @@ void Network::unblockProcesses()
     {
         // Unblock the GTA process
         const std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
-        unblockConnection(gta_process);
+        if (!unblockConnection(gta_process))
+        {
+            return false;
+        }
 
         // Unblock the Steam process
         const std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
-        unblockConnection(steam_process);
+        if (!unblockConnection(steam_process))
+        {
+            return false;
+        }
     }
+
+    return true;
+}
+
+// Main function
+int main()
+{
+    // Get the path of FiveM.exe
+    const std::string fivem_path = "C:\\FiveM";
+
+    // Unblock the network connections for FiveM.exe and its subprocesses
+    if (unblockFiveMProcesses(fivem_path))
+    {
+        std::cout << "Network connections unblocked successfully." << std::endl;
+    }
+
+    return 0;
 }
