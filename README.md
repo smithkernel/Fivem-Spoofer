@@ -1,5 +1,5 @@
 <h1 align="center">
-  CFX Spoofer 📌
+  Fivem Spoofer 📌
 </h1>
 
 <p align="center">
