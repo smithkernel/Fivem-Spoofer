@@ -135,38 +135,19 @@ bool unblockConnection(const std::string& file_path)
 // Unblocks the network connections for FiveM.exe and its subprocesses
 bool unblockFiveMProcesses(const std::string& fivem_path)
 {
-    // Unblock the connection for FiveM.exe
-    if (!unblockConnection(fivem_path + "\\FiveM.exe"))
-    {
-        return false;
-    }
-
-    // Get the path of the FiveM subprocesses
-    const std::string subprocess_path = fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
-
-    // Versions of GTA to unblock connections for
     const std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_", "" };
-
-    // Unblock connections for each version of GTA
-    for (const auto& version : gta_versions)
-    {
-        // Unblock the GTA process
-        const std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
-        if (!unblockConnection(gta_process))
-        {
-            return false;
-        }
-
-        // Unblock the Steam process
-        const std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
-        if (!unblockConnection(steam_process))
-        {
-            return false;
-        }
-    }
-
-    return true;
+    const auto is_unblocked = [&](const std::string& process_name) {
+        return unblockConnection(fivem_path + "\\FiveM.app\\data\\cache\\subprocess\\"
+                                 + process_name);
+    };
+    return is_unblocked("FiveM.exe") &&
+           std::all_of(gta_versions.begin(), gta_versions.end(),
+                       [&](const std::string& version) {
+                           return is_unblocked("FiveM_" + version + "GTAProcess.exe")
+                                  && is_unblocked("FiveM_" + version + "SteamChild.exe");
+                       });
 }
+
 
 // Main function
 int main()
