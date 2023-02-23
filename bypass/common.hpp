@@ -3,17 +3,18 @@
 #include <Windows.h>
 #include <string>
 #include <iostream>
+
 #include <filesystem>
+
 #include <functional>
+#include <string>
+#include <vector>
 #include <cctype>
-#include <algorithm>
-#include <shlobj.h>
+
+#include <shlobj_core.h>
 #include <fstream>
+#include <format>
 
-using namespace std::filesystem;
+#include <netfw.h>
 
-int main()
-{
-// Your code goes here
-return 0;
-}
+
