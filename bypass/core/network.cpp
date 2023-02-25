@@ -1,165 +1,69 @@
 #include "network.hpp"
 #include "trace.hpp"
 
-class network
+void network::block_connection(std::string process)
 {
-public:
-    void block_connection(const std::wstring& process)
-    {
-        INetFwPolicy2* pPolicy2 = nullptr;
-        HRESULT hr = CoCreateInstance(__uuidof(NetFwPolicy2),
-                                      nullptr,
-                                      CLSCTX_INPROC_SERVER,
-                                      __uuidof(INetFwPolicy2),
-                                      (void**)&pPolicy2);
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
+	std::string outbound = "netsh advfirewall firewall add rule name = " + process + " dir = out program = " + process + "  action = block";
+	system(outbound.c_str());
 
-        INetFwRule* pRule = nullptr;
-        hr = CoCreateInstance(__uuidof(NetFwRule),
-                              nullptr,
-                              CLSCTX_INPROC_SERVER,
-                              __uuidof(INetFwRule),
-                              (void**)&pRule);
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
+	std::string inbound = "netsh advfirewall firewall add rule name = " + process + " dir = in program = " + process + "  action = block";
+	system(inbound.c_str());
+}
 
-        pRule->put_Name(process.c_str());
-        pRule->put_ApplicationName(process.c_str());
-        pRule->put_Action(NET_FW_ACTION_BLOCK);
-        pRule->put_Direction(NET_FW_RULE_DIR_OUT);
-        pRule->put_Enabled(VARIANT_TRUE);
-
-        hr = pPolicy2->AddRule(pRule);
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
-
-        pRule->put_Direction(NET_FW_RULE_DIR_IN);
-
-        hr = pPolicy2->AddRule(pRule);
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
-
-        pRule->Release();
-        pPolicy2->Release();
-    }
-
-    void unblock_connection(const std::wstring& process)
-    {
-        INetFwPolicy2* pPolicy2 = nullptr;
-        HRESULT hr = CoCreateInstance(__uuidof(NetFwPolicy2),
-                                      nullptr,
-                                      CLSCTX_INPROC_SERVER,
-                                      __uuidof(INetFwPolicy2),
-                                      (void**)&pPolicy2);
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
-
-        hr = pPolicy2->RemoveRule(process.c_str());
-        if (FAILED(hr))
-        {
-            // Handle error
-        }
-
-        pPolicy2->Release();
-    }
-};
-
-void Network::setup()
+void network::unblock_connection(std::string process)
 {
-    // Locate the path to FiveM.exe
-    std::string fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
+	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
+	system(outbound.c_str());
 
-    // Block the connection to FiveM.exe
-    if (!blockConnection(fivem_path))
-    {
-        std::cerr << "Failed to block connection for " << fivem_path << std::endl;
-    }
+	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
+	system(inbound.c_str());
+}
 
-    // Locate the path to FiveM subprocesses
-    std::string subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+void network::setup()
+{
+	// Locate FiveM.exe
+	auto fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
+	block_connection(fivem_path);
 
-    // Define the different GTA versions
-    std::vector<std::string> gta_versions{"b2545_", "b2372_", "b2189_", "b2060_", ""};
 
-    // Block connections for GTA and Steam processes for each version
-    for (const auto& version : gta_versions)
-    {
-        // Locate the GTA process
-        std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
+	// Locate FiveM Subprocesses path
+	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-        // Block the connection to the GTA process
-        if (!blockConnection(gta_process))
-        {
-            std::cerr << "Failed to block connection for " << gta_process << std::endl;
-        }
+	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
 
-        // Locate the Steam process
-        std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
+	for (auto processes : gta_versions)
+	{
+		// Block the gta processes
+		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
+		block_connection(gta_process);
 
-        // Block the connection to the Steam process
-        if (!blockConnection(steam_process))
-        {
-            std::cerr << "Failed to block connection for " << steam_process << std::endl;
-        }
-    }
+		// Block the steam processes
+		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
+		block_connection(steam_process);
+	}
+
 }
 
 
-// Unblocks the network connection for the specified file path
-bool unblockConnection(const std::string& file_path)
+void network::destroy()
 {
-    // Construct the command to unblock the connection
-    std::string command = "powershell.exe Unblock-File -Path \"" + file_path + "\"";
+	// Locate FiveM.exe
+	auto fivem_path = g_trace->m_fivem_path + "\\" + "FiveM.exe";
+	unblock_connection(fivem_path);
 
-    // Execute the command and check for errors
-    if (system(command.c_str()) != 0)
-    {
-        std::cerr << "Failed to unblock connection for file: " << file_path << std::endl;
-        return false;
-    }
+	// Locate FiveM Subprocesses path
+	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-    return true;
-}
+	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
 
-// Unblocks the network connections for FiveM.exe and its subprocesses
-bool unblockFiveMProcesses(const std::string& fivem_path)
-{
-    const std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_", "" };
-    const auto is_unblocked = [&](const std::string& process_name) {
-        return unblockConnection(fivem_path + "\\FiveM.app\\data\\cache\\subprocess\\"
-                                 + process_name);
-    };
-    return is_unblocked("FiveM.exe") &&
-           std::all_of(gta_versions.begin(), gta_versions.end(),
-                       [&](const std::string& version) {
-                           return is_unblocked("FiveM_" + version + "GTAProcess.exe")
-                                  && is_unblocked("FiveM_" + version + "SteamChild.exe");
-                       });
-}
+	for (auto processes : gta_versions)
+	{
+		// Block the gta processes
+		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
+		unblock_connection(gta_process);
 
-
-// Main function
-int main()
-{
-    // Get the path of FiveM.exe
-    const std::string fivem_path = "C:\\FiveM";
-
-    // Unblock the network connections for FiveM.exe and its subprocesses
-    if (unblockFiveMProcesses(fivem_path))
-    {
-        std::cout << "Network connections unblocked successfully." << std::endl;
-    }
-
-    return 0;
+		// Block the steam processes
+		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
+		unblock_connection(steam_process);
+	}
 }
