@@ -1,18 +1,14 @@
 #pragma once
 #include "common.hpp"
 
-class Network
+class network
 {
 public:
-    Network();
-    ~Network();
-
-    void setup();
-    void destroy();
-
+	void setup();
+	void destroy();
 private:
-    void blockConnection(const std::string& process);
-    void unblockConnection(const std::string& process);
+	void block_connection(std::string process);
+	void unblock_connection(std::string process);
 };
 
-inline std::unique_ptr<Network> g_network;
+inline std::unique_ptr<network> g_network;
