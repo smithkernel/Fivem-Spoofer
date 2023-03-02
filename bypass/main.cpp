@@ -76,7 +76,7 @@ int main()
 			}
 			else
 			{
-				std::cout << "  [Error]  :  " << "select valid folder for FiveM" << "\n" << std::endl;
+				std::cout << "  [Error]  :  " << "Not working" << "\n" << std::endl;
 			}
 
 			system("Pause");
