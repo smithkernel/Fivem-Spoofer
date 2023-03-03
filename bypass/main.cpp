@@ -76,7 +76,7 @@ int main()
 			}
 			else
 			{
-				std::cout << "  [Error]  :  " << "Not working" << "\n" << std::endl;
+				std::cout << "  [Error]  :  " << "Runtime check << "\n" << std::endl;
 			}
 
 			system("Pause");
