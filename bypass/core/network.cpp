@@ -12,19 +12,12 @@ void network::block_connection(std::string process)
 
 void network::unblock_connection(std::string process)
 {
-    std::string outbound_cmd = "netsh advfirewall firewall delete rule name=\"" + process + "\" dir=out program=\"" + process + "\"";
-    int result = std::system(outbound_cmd.c_str());
-    if (result != 0) {
-        std::cerr << "Error deleting outbound firewall rule for process " << process << ": " << result << std::endl;
-    }
+	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
+	system(outbound.c_str());
 
-    std::string inbound_cmd = "netsh advfirewall firewall delete rule name=\"" + process + "\" dir=in program=\"" + process + "\"";
-    result = std::system(inbound_cmd.c_str());
-    if (result != 0) {
-        std::cerr << "Error deleting inbound firewall rule for process " << process << ": " << result << std::endl;
-    }
+	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
+	system(inbound.c_str());
 }
-
 
 void network::setup()
 {
@@ -72,30 +65,5 @@ void network::destroy()
 		// Block the steam processes
 		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
 		unblock_connection(steam_process);
-	}
-}
-
-void enableControls(HWND hDialog, UINT message, UINT control) {
-	switch(message) {
-	case BN_CLICKED:
-		switch(control) {
-		case IDC_TRIGGER_EAX:
-		case IDC_TRIGGER_CUSTOM:
-		{
-			bool custom = control == IDC_TRIGGER_CUSTOM;
-			EnableWindow(GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE), custom ? FALSE : TRUE);
-			EnableWindow(GetDlgItem(hDialog, IDC_TRIGGER_CUSTOM_VALUE), custom ? TRUE : FALSE);
-			return;
-		}
-		case IDC_ACTION_VALUES:
-		case IDC_ACTION_CUSTOM:
-		{
-			bool custom = control == IDC_ACTION_CUSTOM;
-			FOR_EACH_REGISTER(ENABLE_SET_GROUP, custom ? FALSE : TRUE);
-			EnableWindow(GetDlgItem(hDialog, IDC_ACTION_CUSTOM_VALUE), custom ? TRUE : FALSE);
-			return;
-		}
-		FOR_EACH_REGISTER(ENABLE_ON_CLICKED_SET);
-		}
 	}
 }

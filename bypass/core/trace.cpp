@@ -38,11 +38,19 @@ INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 	return 0;
 }
 
-void trace::destroy()
+void trace::cleanUpResources()
 {
-	m_fivem_path.clear();
-	std::remove(m_save_path.c_str());
+    m_fivem_path.clear();
+
+    std::filesystem::path save_path(m_save_path);
+    if (std::filesystem::exists(save_path)) {
+        std::error_code ec;
+        if (!std::filesystem::remove(save_path, ec)) {
+            std::cerr << "Error removing saved data: " << ec.message() << std::endl;
+        }
+    }
 }
+
 
 std::string trace::set_folder(std::string title)
 {
@@ -112,19 +120,7 @@ void trace::set_launch_build()
 	}
 }
 
-void fillCustomTrigger(HWND hDialog) {
-	StringBuilder<32> customValue;
-
-	HWND hValue = GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE);
-
-	if(GetWindowTextLengthW(hValue) > 0) {
-		customValue.putString(L"eax == ");
-		customValue.putWindowText(GetDlgItem(hDialog, IDC_TRIGGER_EAX_VALUE));
-	}
-	SetWindowTextW(GetDlgItem(hDialog, IDC_TRIGGER_CUSTOM_VALUE), customValue.getString());
-}
-
-void trace::get_launch_build()
+std::string trace::get_launch_build()
 {
 	auto path = std::string(m_fivem_path + m_citizen_ini_path).c_str();
 	auto buildNumber = 0;
@@ -136,9 +132,4 @@ void trace::get_launch_build()
 	return std::to_string(buildNumber);
 }
 
-void loadString(std::wstring& string, FILE* file) {
-	int strlen = 0;
-	fread(&strlen, sizeof(strlen), 1, file);
-	string.resize(strlen);
-	fread(&string[0], sizeof(string[0]), strlen, file);
-}
+

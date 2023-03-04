@@ -1,18 +1,17 @@
 <h1 align="center">
-  Fivem SPOOFER 🧹
+  Fivem Spoofer 📌
 </h1>
 
 <p align="center">
- CFX Spoofer Hardware ID Banneds 365 Day & 13 Day
-</p>
+ UNBAN HWID / 365 DAY / 13 DAY BY. CFX Banned
+</p> 
 
-
+  
 
 <p align="center">
-  <img src="https://img.shields.io/github/languages/top/Slackes/Fivem-CFX-Spoofer?style=flat-square"/>
-  <img src="https://img.shields.io/github/last-commit/Slackes/Fivem-CFX-Spoofer?style=flat-square"/>
-  <img src="https://sonarcloud.io/api/project_badges/measure?project=Slackes_Fivem-CFX-Spoofer&metric=ncloc"/>
-  <img src="https://img.shields.io/github/stars/Slackes/Fivem-CFX-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
+  <img src="https://img.shields.io/github/languages/top/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/last-commit/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
+  <img src="https://img.shields.io/github/stars/Serups/Fivem-CFX-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
 
 </p>
    
@@ -20,7 +19,7 @@
 ## <a id="content"></a>🌐 〢 Read
 
 - Follow the video I wrote for a better understanding.
-- Carefully read the instructions below | Install Here: [Download](https://github.com/Slackes/Fivem-CFX-Spoofer/releases/tag/6125)
+- Download Here [Download](https://github.com/Serups/Fivem-CFX-Spoofer/releases/tag/fivem)
   
 ---
 
@@ -54,7 +53,7 @@
 ## <a id="setup2"></a> 🗒 〢 Product
 - If the free version does not work You can pay to buy a personal project.
 - Safe  on main account without getting banned / no need to turn off virus scan Scroll down to the bottom to read more.
-- [Discord](https://discord.gg/MBTkVcJefp) 
+- [Discord](https://discord.gg/2euDQqzD8Y) 
 
    
 ---   
@@ -65,14 +64,15 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 --- 
 
   <p align="center">
-    <a href="https://discord.gg/MBTkVcJefp">
-        <img title="Slackes server discord" alt="Slackes discord" src="https://discordapp.com/api/guilds/880135738077896764/widget.png?style=banner2"/>
+    <a href="https://discord.gg/2euDQqzD8Y">
+        <img title="Serups server discord" alt="Serups discord" src="https://discordapp.com/api/guilds/923947526552432731/widget.png?style=banner2"/>
     </a>
 </p> 
  
-## 💬 ・[Discord](https://discord.gg/MBTkVcJefp) 
+## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y)
+#### `CLICK BLUE BUTTON FOR JOIN SERVER.`
 
- ### 🛒〢 `SHOP`
+ ### 🛒〢 `PRODUCT`
  
 <table>
 <tr>
@@ -87,15 +87,14 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
 - Lifetime 
 - Free Updates 
 - Undetected
-- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers)`
+- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`
 
-### 📌〢 Warranty
+### 📌 〢 Warranty
 
-- Support 24 Hr
-- Update Free
-- If banned = `REFUND`
+- Support 24 Hr / Free updated 
+- Banned = `REFUND MONEY`
 
-A website that I created to introduce myself from start to finish. hope you like it [Slackes.me](http://slackes.me/)
+#### Website | Portfolio [Serups.me](http://Serups.me/)
 
 ---
 
