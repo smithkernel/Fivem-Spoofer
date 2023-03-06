@@ -45,25 +45,56 @@ void network::setup()
 }
 
 
-void network::destroy()
+// Unblock network connections to FiveM and its subprocesses
+void network::unblockConnections()
 {
-	// Locate FiveM.exe
-	auto fivem_path = g_trace->m_fivem_path + "\\" + "FiveM.exe";
-	unblock_connection(fivem_path);
+    // Get the path to the FiveM.exe file
+    std::string fivemPath = getFivemPath();
 
-	// Locate FiveM Subprocesses path
-	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+    // Unblock network connections to FiveM.exe
+    unblockConnection(fivemPath);
 
-	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+    // Get the path to the subprocess directory
+    std::string subprocessPath = getSubprocessPath();
 
-	for (auto processes : gta_versions)
-	{
-		// Block the gta processes
-		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
-		unblock_connection(gta_process);
+    // List of GTA versions
+    std::vector<std::string> gtaVersions = getGtaVersions();
 
-		// Block the steam processes
-		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
-		unblock_connection(steam_process);
-	}
+    // Unblock network connections to subprocesses for each GTA version
+    for (const auto& version : gtaVersions)
+    {
+        std::string gtaProcessPath = subprocessPath + "\\FiveM_" + version + "GTAProcess.exe";
+        std::string steamProcessPath = subprocessPath + "\\FiveM_" + version + "SteamChild.exe";
+
+        unblockConnection(gtaProcessPath);
+        unblockConnection(steamProcessPath);
+    }
 }
+
+// Get the path to the FiveM.exe file
+std::string network::getFivemPath()
+{
+    // TODO: implement the logic to get the path to FiveM.exe
+    return "";
+}
+
+// Get the path to the subprocess directory
+std::string network::getSubprocessPath()
+{
+    // TODO: implement the logic to get the path to the subprocess directory
+    return "";
+}
+
+// Get the list of GTA versions
+std::vector<std::string> network::getGtaVersions()
+{
+    // TODO: implement the logic to get the list of GTA versions
+    return {};
+}
+
+// Unblock network connections to a file
+void network::unblockConnection(const std::string& filePath)
+{
+    // TODO: implement the logic to unblock network connections to a file
+}
+
