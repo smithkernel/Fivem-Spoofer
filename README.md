@@ -20,7 +20,9 @@
 
 - Follow the video I wrote for a better understanding.
 - Download Here [Download](https://github.com/Serups/Fivem-CFX-Spoofer/releases/tag/fivem)
-  
+
+#### ❗ Help & Support
+- Not understand How To Use | Join Discord For Helps: [Discord Servers](https://discord.gg/2euDQqzD8Y)
 ---
 
 ## <a id="setup"></a> 📁 〢 How To Use:
