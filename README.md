@@ -5,9 +5,9 @@
 <p align="center">
  UNBAN HWID / 365 DAY / 13 DAY BY. CFX Banned
 </p> 
-
+ 
   
-
+ 
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
   <img src="https://img.shields.io/github/last-commit/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
@@ -20,10 +20,12 @@
 
 - Follow the video I wrote for a better understanding.
 - Download Here [Download](https://github.com/Serups/Fivem-CFX-Spoofer/releases/tag/fivem)
-  
+
+#### ❗ Help & Support
+- Not understand How To Use | Join Discord For Helps: [Discord Servers](https://discord.gg/2euDQqzD8Y)
 ---
 
-## <a id="setup"></a> 📁 〢 Use
+## <a id="setup"></a> 📁 〢 How To Use:
 
 - Please follow all steps in line order to avoid confusion.
    
@@ -50,10 +52,11 @@
 
 
 
-## <a id="setup2"></a> 🗒 〢 Product
-- If the free version does not work You can pay to buy a personal project.
-- Safe  on main account without getting banned / no need to turn off virus scan Scroll down to the bottom to read more.
-- [Discord](https://discord.gg/2euDQqzD8Y) 
+## <a id="setup2"></a> 🗒 〢 Undetected
+- Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
+- **Legit Playing & Waranty & Lifetime | Up To You.**
+- [Discord Server](https://discord.gg/2euDQqzD8Y) 
+
 
    
 ---   
@@ -69,37 +72,37 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
     </a>
 </p> 
  
-## 💬 ・[Discord Server](https://discord.gg/2euDQqzD8Y)
-#### `CLICK BLUE BUTTON FOR JOIN SERVER.`
+## 💬 ・[Discord](https://discord.gg/2euDQqzD8Y)
 
- ### 🛒〢 `PRODUCT`
+`BLUE BUTTON FOR JOIN SERVER`
+
+ ### 🛒〢 `SHOP`
  
 <table>
 <tr>
 	<td> PRIVATE CHEAT
-	<td> SPOOFER
+	<td> PRIVATE SPOOFER
 	<td> SOURCE CODE
 </table>
 
   
-### 🥊 〢 Private Cheat
+### 🎈 〢 Private Cheat
 
-- Lifetime 
-- Free Updates 
-- Undetected
-- Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`
+- Lifetime & Free updated
+- Undetected / Legit
+- **Custom Feature if you want `(Example: Aimbot + Esp + Skin Changers + More)`**
 
-### 📌 〢 Warranty
+### 🩹 〢 Warranty
 
-- Support 24 Hr / Free updated 
-- Banned = `REFUND MONEY`
+- **Support 24/7 & Free updated** 
+- **Banned = `FULL REFUND`**
 
-#### Website | Portfolio [Serups.me](http://Serups.me/)
+#### Website | Resume [Serups.me](http://Serups.me/)
 
 ---
 
   <br>
 
 <p align="center">
-  Copyright © 2021 - 2022
+  Copyright © 2023 All rights reserved
 <br>

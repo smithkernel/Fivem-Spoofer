@@ -5,14 +5,14 @@
 
 class Network {
 public:
-    void Setup(); // renamed to follow naming convention
-    void Destroy(); // renamed to follow naming convention
-    void BlockConnection(const std::string& process); // renamed and const added to string parameter
-    void UnblockConnection(const std::string& process); // renamed and const added to string parameter
+    void setupNetwork(); 
+    void destroyNetwork(); 
+    void blockConnection(const std::string& processName) const; 
+    void unblockConnection(const std::string& processName) const; 
 private:
-    // make sure to use camelCase naming convention for private members
-    void blockConnectionImpl(const std::string& process);
-    void unblockConnectionImpl(const std::string& process);
+    void blockConnectionImpl(const std::string& processName); 
+    void unblockConnectionImpl(const std::string& processName); 
 };
+
 
 extern std::unique_ptr<Network> g_network; // declared as extern to avoid linker errors
