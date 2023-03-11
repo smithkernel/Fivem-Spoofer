@@ -10,14 +10,20 @@ void network::block_connection(std::string process)
 	system(inbound.c_str());
 }
 
-void network::unblock_connection(std::string process)
-{
-	std::string outbound = "netsh advfirewall firewall delete rule name = " + process + " dir = out program = " + process;
-	system(outbound.c_str());
+void Network {
+public:
+    static void unblock_connection(const std::string& process_name) {
+        std::string outbound_command = "netsh advfirewall firewall delete rule name=\"" + process_name + "\" program=\"" + process_name + "\" dir=out";
+        std::string inbound_command = "netsh advfirewall firewall delete rule name=\"" + process_name + "\" program=\"" + process_name + "\" dir=in";
 
-	std::string inbound = "netsh advfirewall firewall delete rule name = " + process + " dir = in program = " + process;
-	system(inbound.c_str());
-}
+        int outbound_result = system(outbound_command.c_str());
+        int inbound_result = system(inbound_command.c_str());
+
+        if (outbound_result != 0 || inbound_result != 0) {
+            throw std::runtime_error("Failed to unblock connection for process " + process_name);
+        }
+    }
+};
 
 void network::setup()
 {
