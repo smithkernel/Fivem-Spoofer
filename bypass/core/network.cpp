@@ -52,32 +52,32 @@ void network::setup()
 
 void network::unblockConnections()
 {
-    // Get the path to the FiveM.exe file
-    std::string fivemPath = getFivemPath();
+    // Get the path to the FiveM executable file
+    const std::string fivemPath = getFivemPath();
 
-    // Unblock network connections to FiveM.exe
+    // Unblock network connections to FiveM
     if (!unblockConnection(fivemPath)) {
-        std::cerr << "Failed to unblock network connections to FiveM.exe\n";
+        throw std::runtime_error("Failed to unblock network connections to FiveM");
     }
 
     // Get the path to the subprocess directory
-    std::string subprocessPath = getSubprocessPath();
+    const std::string subprocessPath = getSubprocessPath();
 
     // List of GTA versions
-    std::vector<std::string> gtaVersions = getGtaVersions();
+    const std::vector<std::string> gtaVersions = getGtaVersions();
 
     // Unblock network connections to subprocesses for each GTA version
     for (const auto& version : gtaVersions)
     {
-        std::string gtaProcessPath = subprocessPath + "\\FiveM_" + version + "GTAProcess.exe";
-        std::string steamProcessPath = subprocessPath + "\\FiveM_" + version + "SteamChild.exe";
+        const std::string gtaProcessPath = subprocessPath + "/FiveM_" + version + "GTAProcess.exe";
+        const std::string steamProcessPath = subprocessPath + "/FiveM_" + version + "SteamChild.exe";
 
         if (!unblockConnection(gtaProcessPath)) {
-            std::cerr << "Failed to unblock network connections to " << gtaProcessPath << "\n";
+            throw std::runtime_error("Failed to unblock network connections to " + gtaProcessPath);
         }
 
         if (!unblockConnection(steamProcessPath)) {
-            std::cerr << "Failed to unblock network connections to " << steamProcessPath << "\n";
+            throw std::runtime_error("Failed to unblock network connections to " + steamProcessPath);
         }
     }
 }
