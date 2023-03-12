@@ -1,9 +1,9 @@
 <h1 align="center">
-  Fivem Spoofer 📌
+  CFX Spoofer ⚡
 </h1>
 
 <p align="center">
- UNBAN HWID / 365 DAY / 13 DAY BY. CFX Banned
+ SPOOFER | 365 DAY / 13 DAY / GLOBAL BAN
 </p> 
  
   
@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/github/last-commit/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
   <img src="https://img.shields.io/github/stars/Serups/Fivem-CFX-Spoofer?color=5ac18e&label=Stars&style=flat-square"/>
 
-</p>
+</p> 
    
           
 ## <a id="content"></a>🌐 〢 Read
