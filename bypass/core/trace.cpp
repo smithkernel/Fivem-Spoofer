@@ -35,19 +35,11 @@ INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 	return 0;
 }
 
-void trace::cleanUpResources()
+void trace::destroy()
 {
-    m_fivem_path.clear();
-
-    std::filesystem::path save_path(m_save_path);
-    if (std::filesystem::exists(save_path)) {
-        std::error_code ec;
-        if (!std::filesystem::remove(save_path, ec)) {
-            std::cerr << "Error removing saved data: " << ec.message() << std::endl;
-        }
-    }
+	m_fivem_path.clear();
+	std::remove(m_save_path.c_str());
 }
-
 
 std::string trace::set_folder(std::string title)
 {
