@@ -6,7 +6,7 @@
  SPOOFER | 365 DAY / 13 DAY / GLOBAL BAN
 </p> 
  
-  
+   
  
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/Serups/Fivem-CFX-Spoofer?style=flat-square"/>
