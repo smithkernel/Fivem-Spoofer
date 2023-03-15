@@ -22,7 +22,7 @@
 - Download Here [Download](https://github.com/Serups/Fivem-CFX-Spoofer/releases/tag/fivem)
 
 #### ❗ Help & Support
-- Not understand How To Use | Join Discord For Helps: [Telegram](https://discord.gg/2euDQqzD8Y)
+- Not understand How To Use | Join Telegram For Helps: [Telegram](https://t.me/Serups)
 ---
 
 ## <a id="setup"></a> 📁 〢 How To Use:
@@ -55,7 +55,7 @@
 ## <a id="setup2"></a> 🗒 〢 Undetected
 - Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
 - **Legit Playing & Waranty & Lifetime | Up To You.**
-- [Telegram](https://discord.gg/2euDQqzD8Y) 
+- [Telegram](https://t.me/Serups)
 
 
    
@@ -72,7 +72,7 @@ https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-
     </a>
 </p>
  
-## 💬 ・[Telegram](https://discord.gg/2euDQqzD8Y)
+## 💬 ・[Telegram](https://t.me/Serups)
 
 - Now we Buy order in Telegram for privacy | [Download Telegram](https://desktop.telegram.org/?setln=en)
 - It is safer than Discord and Faster
