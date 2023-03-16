@@ -31,9 +31,17 @@ void trace::setup()
 
 INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 {
-	if (uMsg == BFFM_INITIALIZED) SendMessage(hwnd, BFFM_SETSELECTION, TRUE, pData);
-	return 0;
+    switch (uMsg)
+    {
+        case BFFM_INITIALIZED:
+            SendMessage(hwnd, BFFM_SETSELECTION, TRUE, pData);
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
+
 
 void trace::destroy()
 {
