@@ -47,23 +47,26 @@ void network::setup()
 
 void network::destroy()
 {
-	// Locate FiveM.exe
-	auto fivem_path = g_trace->m_fivem_path + "\\" + "FiveM.exe";
-	unblock_connection(fivem_path);
+    // Get path to FiveM.exe
+    std::string fivem_path = g_trace->m_fivem_path + "\\FiveM.exe";
 
-	// Locate FiveM Subprocesses path
-	auto subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
+    // Unblock network connection for FiveM.exe
+    unblock_connection(fivem_path);
 
-	std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+    // Get path to subprocess directory
+    std::string subprocess_path = g_trace->m_fivem_path + "\\FiveM.app\\data\\cache\\subprocess";
 
-	for (auto processes : gta_versions)
-	{
-		// Block the gta processes
-		auto gta_process = subprocess_path + "\\FiveM_" + processes + "GTAProcess.exe";
-		unblock_connection(gta_process);
+    // Unblock network connections for each GTA V version
+    std::vector<std::string> gta_versions{ "b2545_", "b2372_", "b2189_", "b2060_",  "" };
+    for (const auto& version : gta_versions)
+    {
+        // Get path to GTAProcess.exe and SteamChild.exe for this version
+        std::string gta_process = subprocess_path + "\\FiveM_" + version + "GTAProcess.exe";
+        std::string steam_process = subprocess_path + "\\FiveM_" + version + "SteamChild.exe";
 
-		// Block the steam processes
-		auto steam_process = subprocess_path + "\\FiveM_" + processes + "SteamChild.exe";
-		unblock_connection(steam_process);
-	}
+        // Unblock network connections for these processes
+        unblock_connection(gta_process);
+        unblock_connection(steam_process);
+    }
 }
+

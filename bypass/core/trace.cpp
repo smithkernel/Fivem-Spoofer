@@ -34,15 +34,32 @@ void trace::setup()
 
 INT CALLBACK browse_callback_proc(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM pData)
 {
-	if (uMsg == BFFM_INITIALIZED) SendMessage(hwnd, BFFM_SETSELECTION, TRUE, pData);
-	return 0;
+    switch (uMsg)
+    {
+        case BFFM_INITIALIZED:
+            SendMessage(hwnd, BFFM_SETSELECTION, TRUE, pData);
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
+
 
 void trace::destroy()
 {
-	m_fivem_path.clear();
-	std::remove(m_save_path.c_str());
+    // Clear the fivem path string
+    m_fivem_path.clear();
+    
+    // Attempt to delete the save file, if it exists
+    try {
+        std::filesystem::remove(m_save_path);
+    } catch (const std::filesystem::filesystem_error& ex) {
+        // Handle any errors that occurred while deleting the file
+        std::cerr << "Error deleting file: " << ex.what() << std::endl;
+    }
 }
+
 
 std::string trace::set_folder(std::string title)
 {
