@@ -18,6 +18,9 @@
           
 ## <a id="content"></a>🌐 〢 Read
 
+
+This is the version and it is always updated according to the Fivem version.
+
 - Follow the video I wrote for a better understanding.
 - Download Here [Download](https://github.com/Serups/Fivem-CFX-Spoofer/releases/tag/fivem)
 
@@ -25,32 +28,30 @@
 - Not understand How To Use | Join Telegram For Helps: [Telegram](https://t.me/Serups)
 ---
 
-## <a id="setup"></a> 📁 〢 How To Use:
+## <a id="setup"></a> 💡 〢 Use:
 
-- Please follow all steps in line order to avoid confusion.
+Please Follow all steps in line order to avoid confusion.
    
-<table>
-<tr>
-	<td> Step 1
-</table>
+### First
 
-- [ ] 1. Reinstall Windows + Flash bios
-- [ ] 2. Change Rockstar + Steam + Discord (Do not login to the same account after the installation of new windows is complete)
-- [ ] 3. Install Fivem
-   
-<table>
-<tr>
-	<td> Step 2
-</table>
+- Reinstall Windows & Flash Bios
+- Reset TMAC 
+- Change Rockstar & Discord & Steam Account
 
-- Open Spoofer and Select Folder `FIVEM` 
+Download [TMAC](https://technitium.com/tmac/) | Reset IP
 
-- [ ] 1. Cleaner 
-- [ ] 2. Bypass (and enter the game Select any server, then do not press to enter the server, press to close Fivem)
-- [ ] 3. Disable Bypass
-- [ ] 4. Join one of the servers
+### Two
+
+Download Spoofer and open it. (Choose folder Fivem)
+
+1. Cleaner 
+2. Enable Bypass (And access to any server And if it's still banned, Close Fivem)
+3. Disable Bypass
+4. Join server via IP (F8)
 
 
+
+---   
 
 ## <a id="setup2"></a> 🗒 〢 Undetected
 - Free version is used by many Users, Detected are quite High | Our recommended alternative is Private Cheat.
@@ -59,7 +60,7 @@
 
 
    
----   
+
 
 https://user-images.githubusercontent.com/94861415/178159835-38ff18a5-89dc-412b-a4f4-a2a6eca86eb0.mp4
 
